@@ -47,7 +47,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/profil', [AdminDasborController::class, 'profil'])->name('admin.profil');
 
         
-        require 'admin/anggota.php';
+        require 'admin/anggota/baru.php';
 
     });
     

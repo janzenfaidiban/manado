@@ -163,7 +163,7 @@
               </li>
 
               <li>
-                <a href="{{ route('admin.dasbor') }}">
+                <a href="{{ route('admin.anggota.baru') }}">
                   <span class="sub-item">Anggota Baru</span>
                 </a>
               </li>

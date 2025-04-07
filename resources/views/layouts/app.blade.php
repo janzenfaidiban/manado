@@ -49,22 +49,7 @@
 
       <x-header />
 
-      <!-- main content -->
-      <div class="container">
-        <div class="page-inner">
-
-          <x-page-header />
-
-          <div class="page-category">
-
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab aliquid ut quo at illo nisi molestiae praesentium maiores minus harum atque labore qui itaque in, distinctio non autem rerum soluta repellendus provident eos quae quidem. Magni rem similique perferendis aut dolore. Molestiae dicta iure sed error beatae ducimus voluptatum ut!</p>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati, unde. Sequi iusto quidem doloribus. Suscipit exercitationem corrupti a animi, ipsum perferendis fugiat dolorem. Similique, facere.</p>
-          </div>
-
-        </div>
-        <!-- end page-inner -->
-      </div>
-      <!-- end container -->
+      @yield('content')
 
       <x-footer />
 

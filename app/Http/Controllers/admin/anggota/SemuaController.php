@@ -12,17 +12,17 @@ use Eelcol\LaravelBootstrapAlerts\Facade\BootstrapAlerts;
 use App\Models\User;
 use App\Models\Anggota;
 
-class PindahMasukController extends Controller
+class SemuaController extends Controller
 {
 
     // index
     public function index()
     {
 
-        $pageTitle = 'Anggota Pindah Masuk';
-        $pageDescription = 'Menampilkan semua data anggota pindah masuk.';
+        $pageTitle = 'Semua Anggota';
+        $pageDescription = 'Menampilkan semua data anggota.';
 
-        return view('admin.anggota.pindahmasuk', compact(
+        return view('admin.anggota.semua', compact(
             'pageTitle',
             'pageDescription',
         ))->with('i', (request()->input('page', 1) - 1) * 10);

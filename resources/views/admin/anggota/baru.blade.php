@@ -18,23 +18,6 @@
                                 <div class="card-body">
 
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi similique molestias sapiente temporibus nihil cumque ducimus quas velit rem earum neque iure culpa, nulla reiciendis. Debitis, cumque omnis dicta natus, voluptatum architecto mollitia sit ullam inventore, quod itaque sint impedit labore? Illum ea aut, necessitatibus eaque non quae aliquam optio?</p>
-
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>...</th>
-                                                <th>...</th>
-                                                <th>...</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>...</td>
-                                                <td>...</td>
-                                                <td>...</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
                                 
                                 </div>
                             </div>

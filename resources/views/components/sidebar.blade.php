@@ -147,35 +147,35 @@
       
 
         <!-- anggota -->
-        <li class="nav-item">
+        <li class="nav-item active submenu">
           <a data-bs-toggle="collapse" href="#anggota" class="collapsed" aria-expanded="false">
             <i class="fas fa-users"></i>
             <p>Anggota</p>
             <span class="caret"></span>
           </a>
-          <div class="collapse" id="anggota">
+          <div class="collapse @if(Request::segment(2) == 'anggota') show @endif" id="anggota">
             <ul class="nav nav-collapse">
               
-              <li>
-                <a href="{{ route('admin.dasbor') }}">
+              <li @if(Request::segment(3) == 'semua') class="active" @endif>
+                <a href="{{ route('admin.anggota.semua') }}">
                   <span class="sub-item">Semua Anggota</span>
                 </a>
               </li>
 
-              <li>
+              <li @if(Request::segment(3) == 'baru') class="active" @endif>
                 <a href="{{ route('admin.anggota.baru') }}">
                   <span class="sub-item">Anggota Baru</span>
                 </a>
               </li>
 
-              <li>
-                <a href="{{ route('admin.dasbor') }}">
+              <li @if(Request::segment(3) == 'pindahmasuk') class="active" @endif>
+                <a href="{{ route('admin.anggota.pindahmasuk') }}">
                   <span class="sub-item">Pindah Masuk</span>
                 </a>
               </li>
 
-              <li>
-                <a href="{{ route('admin.dasbor') }}">
+              <li @if(Request::segment(3) == 'pindahkeluar') class="active" @endif>
+                <a href="{{ route('admin.anggota.pindahkeluar') }}">
                   <span class="sub-item">Pindah Keluar</span>
                 </a>
               </li>

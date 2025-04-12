@@ -22,16 +22,12 @@ class BaruController extends Controller
         $pageTitle = 'Anggota Baru';
         $pageDescription = 'Menampilkan semua data anggota baru.';
 
-        return view('admin.anggota.baru.index', compact(
+        return view('admin.anggota.baru', compact(
             'pageTitle',
             'pageDescription',
         ))->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     // create
-    public function create()
-    {
-        return 'controller > admin > anggota > baru > create';
-    }
     
 }

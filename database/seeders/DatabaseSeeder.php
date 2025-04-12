@@ -15,9 +15,14 @@ class DatabaseSeeder extends Seeder
 
             RoleSeeder::class,
             UserSeeder::class,
-            PoliklinikSeeder::class,
-            BarangSeeder::class,
-
+                        
+            KampusSeeder::class,
+            
+            FakultasSeeder::class,
+            
+            ProgramStudiSeeder::class,
+            
+            AnggotaSeeder::class,
         ]);
 
 

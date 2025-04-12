@@ -62,7 +62,7 @@
         <!-- Ringkasan Statistik -->
         <li class="nav-item">
           <a data-bs-toggle="collapse" href="#ringkasan-statistik" class="collapsed" aria-expanded="false">
-            <i class="fas fa-users"></i>
+            <i class="fas fa-tag"></i>
             <p>Ringkasan Statistik</p>
             <span class="caret"></span>
           </a>
@@ -91,7 +91,7 @@
         <!-- rekapan -->
         <li class="nav-item">
           <a data-bs-toggle="collapse" href="#rekapan" class="collapsed" aria-expanded="false">
-            <i class="fas fa-users"></i>
+            <i class="fas fa-tag"></i>
             <p>Rekapan Data</p>
             <span class="caret"></span>
           </a>
@@ -190,7 +190,7 @@
         <!-- data master -->
         <li class="nav-item">
           <a data-bs-toggle="collapse" href="#data-master" class="collapsed" aria-expanded="false">
-            <i class="fas fa-users"></i>
+            <i class="fas fa-box"></i>
             <p>Data Master</p>
             <span class="caret"></span>
           </a>

@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('fakultas', function (Blueprint $table) {
             $table->id();
             
-            $table->foreignId('kampus_id')->constrained('kampuses')->onDelete('cascade');
+            // $table->foreignId('kampus_id')->constrained('kampuses')->onDelete('cascade');
+            
+            $table->unsignedBigInteger('kampus_id')->nullable();
+            $table->foreign('kampus_id')->references('id')->on('kampuses')->onDelete('set null');
             
             $table->string('nama_fakultas');
             $table->text('keterangan')->nullable();

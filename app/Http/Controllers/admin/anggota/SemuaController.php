@@ -16,8 +16,22 @@ class SemuaController extends Controller
 {
 
     // index
+    // menampilkan data dari databasei
     public function index()
     {
+        // Ambil parameter pencarian
+        $search = request()->search;
+
+        // Mulai query dari Anggota
+        $query = Anggota::query();
+
+        // Jika ada pencarian, filter berdasarkan nama_lengkap
+        if ($search) {
+            $query->where('nama_lengkap', 'LIKE', '%' . $search . '%');
+        }
+
+        // Urutkan berdasarkan nama_lengkap ascending
+        $datas = $query->orderBy('nama_lengkap', 'asc')->paginate(2);
 
         $pageTitle = 'Semua Anggota';
         $pageDescription = 'Menampilkan semua data anggota.';
@@ -25,9 +39,29 @@ class SemuaController extends Controller
         return view('admin.anggota.semua', compact(
             'pageTitle',
             'pageDescription',
-        ))->with('i', (request()->input('page', 1) - 1) * 10);
+            'datas',
+        ))->with('i', (request()->input('page', 1) - 1) * 2);
     }
 
     // create
+    // menampilkan form tambah data
+
+    // store
+    // proses tambah data ke database
+
+    // edit
+    // menampilkan form ubah data
+
+    // update
+    // proses ubah simpan data yang dirubah ke database
+
+    // softDelete
+    // proses hapus data secara sementara (masukan ke dalam tempat sampah)
+
+    // restore
+    // mengembalikan data dari status softDelete (keluarkan dari tempat sampah)
+
+    // forceDelete
+    // menghapus data secara permanen
     
 }

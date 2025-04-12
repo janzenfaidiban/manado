@@ -1,28 +1,24 @@
-<div class="row">
-    <div class="col-lg-6">
-        <a href="#" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#tambahModal">
-            {!! $iconTombolTambah !!} Tambah
-        </a>
 
-        <a href="{{ $routeSemua }}" class="btn btn-link {{ $isSemuaActive ? 'text-primary' : 'text-dark' }}">
-            {!! $iconSemuaData !!} Semua ({{ $totalAll ?? '' }})
-        </a>
+                                    <div class="row align-items-center">
+                                        <div class="col-lg-6">
+                                            <button class="btn btn-primary">
+                                                <span class="btn-label">
+                                                <i class="fa fa-plus"></i>
+                                                </span>
+                                                Anggota Baru
+                                            </button>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <form action="{{ $formAction }}" method="GET">
+                                                <div class="form-group">
+                                                    <div class="input-icon">
+                                                        <input type="text" class="form-control" name="search" placeholder="Cari nama anggota..." value="{{ request()->search ?? old('search') }}">
+                                                        <span class="input-icon-addon">
+                                                            <i class="fa fa-search"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </form>
 
-        <a href="{{ $routeTrash }}" class="btn btn-link {{ $isTrashActive ? 'text-primary' : 'text-dark' }}">
-            {!! $iconTempatSampah !!} Tempat Sampah ({{ $totalOnlyTrashed ?? '' }})
-        </a>
-    </div>
-
-    <div class="col-lg-6">
-        <form action="{{ $formAction }}" method="GET">
-            <div class="form-group mb-3">
-                <div class="input-group">
-                    <input type="text" class="form-control" name="search" placeholder="Pencarian data..." aria-label="Recipient's username" value="{{ request()->search ?? old('search') }}">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-primary waves-effect waves-light" type="submit">{!! $iconPencarian !!} Cari</button>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
+                                        </div>
+                                    </div>

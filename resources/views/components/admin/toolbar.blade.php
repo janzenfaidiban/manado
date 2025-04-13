@@ -1,12 +1,12 @@
 
                                     <div class="row align-items-center">
                                         <div class="col-lg-6">
-                                            <button class="btn btn-primary">
+                                            <a href="{{ $btnCreate }}" class="btn btn-primary">
                                                 <span class="btn-label">
                                                 <i class="fa fa-plus"></i>
                                                 </span>
                                                 Anggota Baru
-                                            </button>
+                                            </a>
                                         </div>
                                         <div class="col-lg-6">
                                             <form action="{{ $formAction }}" method="GET">

@@ -17,14 +17,11 @@
                             <div class="card">
                                 <div class="card-body">
 
-                                    <!-- alert -->
-                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                        <strong>Berhasil</strong> Data telah ditambahkan ke dalam database.
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                    </div>
+                                    <x-alert />
 
                                     <!-- toolbar -->
                                     <x-admin.toolbar 
+                                        :btnCreate="route('admin.anggota.semua.create')"
                                         :formAction="Request::segment(3) == 'trash' 
                                             ? route('admin.anggota.trash') 
                                             : route('admin.anggota.semua')"
@@ -32,15 +29,16 @@
 
                                     <!-- table-responsieve start -->
                                     <div class="table-responsive">
-                                        <table class="table table-bordered">
+                                        <table class="table table-bordered table-hover">
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Tanggal Pendaftaran</th>
                                                     <th>Foto</th>
                                                     <th>Nama Lengkap</th>
-                                                    <th>NIM</th>
                                                     <th>KPM</th>
+                                                    <th>NIM</th>
+                                                    <th>KTP</th>
                                                     <th>Kampus</th>
                                                     <th>Fakultas</th>
                                                     <th>Program Studi</th>
@@ -63,16 +61,26 @@
                                                     <td>{{ \Carbon\Carbon::parse($item->tanggal_pendaftaran)->translatedFormat('l, d F Y') }}</td>
                                                     <td>
                                                         <div class="avatar avatar-xl">
-                                                            <img src="{{ asset('assets/img/sacode-profile-1.png') }}" alt="foto" class="w-100 rounded-circle">
+                                                            <img 
+                                                                src="{{ $item->foto ? asset('storage/' . $item->foto) : asset('assets/img/avatar-placeholder.png') }}" 
+                                                                alt="foto" 
+                                                                class="w-100 rounded-circle">
                                                         </div>
                                                     </td>
                                                     <td>{!! $item->nama_lengkap !!}</td>
+                                                    <td>
+                                                        <a href="#" data-bs-toggle="modal" data-bs-target="#kpmModal{{ $item->id }}">Tampilkan</a>
+                                                    </td>
                                                     <td>{!! $item->nim !!}</td>
-                                                    <td>{!! $item->kpm !!}</td>
-                                                    <td>{!! $item->kampus_id !!}</td>
-                                                    <td>Fakultas</td>
-                                                    <td>Program Studi</td>
-                                                    <td>{!! $item->jenis_kelamin !!}</td>
+                                                    <td>
+                                                        <a href="#" data-bs-toggle="modal" data-bs-target="#ktpModal{{ $item->id }}">Tampilkan</a>
+                                                    </td>
+                                                    <td>{!! $item->programstudi->fakultas->kampus->nama_kampus !!}</td>
+                                                    <td>{!! $item->programstudi->fakultas->nama_fakultas !!}</td>
+                                                    <td>{!! $item->programstudi->nama_program_studi !!}</td>
+                                                    <td>
+                                                        {!! $item->jenis_kelamin == 'P' ? 'Perempuan' : ($item->jenis_kelamin == 'L' ? 'Laki-Laki' : 'Unknown') !!}
+                                                    </td>
                                                     <td>{{ $item->tempat_lahir }}, {{ \Carbon\Carbon::parse($item->tanggal_lahir)->translatedFormat('d F Y') }}</td>
                                                     <td>{!! $item->agama !!}</td>
                                                     <td>{!! $item->alamat_tinggal !!}</td>
@@ -83,19 +91,41 @@
                                                     <td>{!! $item->keterangan !!}</td>
                                                     <td>
                                                         <div class="d-flex align-items-center">
-                                                            <a href="#" class="btn btn-sm" title="Detail">
+                                                            <a href="{{ route('admin.anggota.semua.show', $item->id) }}" class="btn btn-sm" title="Detail">
                                                                 <i class="fa fa-eye"></i> 
                                                             </a>
-                                                            <a href="#" class="btn btn-sm" title="Ubah">
+                                                            <a href="{{ route('admin.anggota.semua.edit', $item->id) }}" class="btn btn-sm" title="Ubah">
                                                                 <i class="fa fa-edit"></i> 
                                                             </a>
-                                                            <a href="#" class="btn btn-sm" title="Hapus">
-                                                                <i class="fa fa-trash"></i> 
+
+                                                            <!-- Tombol Hapus -->
+                                                            <a href="#" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#forceDeleteModal{{ $item->id }}" title="Hapus Permanen">
+                                                                <i class="fa fa-trash"></i>
                                                             </a>
 
                                                         </div>
                                                     </td>
                                                 </tr>
+
+                                                <x-kpm-modal 
+                                                    :id="$item->id" 
+                                                    :nama="$item->nama_lengkap" 
+                                                    :kpm="$item->kpm" 
+                                                />
+
+                                                <x-ktp-modal 
+                                                    :id="$item->id" 
+                                                    :nama="$item->nama_lengkap" 
+                                                    :ktp="$item->ktp" 
+                                                />
+
+                                                <x-force-delete-modal 
+                                                    :id="$item->id" 
+                                                    :nama="$item->nama_lengkap" 
+                                                    :route="route('admin.anggota.semua.forceDelete', $item->id)" 
+                                                />
+
+
                                                 @empty 
                                                 <p>Tidak ada data</p>
                                                 @endforelse

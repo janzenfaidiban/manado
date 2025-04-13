@@ -23,18 +23,15 @@ return new class extends Migration
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
             $table->string('agama');
-            $table->text('alamat_tinggal');
-            $table->string('no_hp');
-            $table->string('email')->unique();
-            $table->string('kampus');
-            $table->string('fakultas');
-            $table->string('program_studi');
-            $table->string('foto')->nullable();
+            $table->text('alamat_tinggal')->nullable();
+            $table->string('no_hp')->nullable();
+            $table->string('email')->unique()->nullable();
             $table->string('kpm')->nullable();
-            $table->string('nim')->unique();
+            $table->string('nim')->unique()->nullable();
             $table->string('ktp')->nullable();
-            $table->enum('status_anggota', ['aktif', 'nonaktif', 'pending'])->default('pending');
-            $table->boolean('alumni')->default(false);
+            $table->string('foto')->nullable();
+            $table->enum('status_anggota', ['Aktif', 'Nonaktif', 'Pending'])->default('Pending');
+            $table->integer('alumni')->nullable();
             $table->text('keterangan')->nullable();
 
             $table->timestamps();

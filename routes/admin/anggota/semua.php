@@ -13,6 +13,25 @@ Route::prefix('anggota')->group(function () {
         // menampilkan formulir tambah anggota semua
         Route::get('/semua/create', 'create')->name('admin.anggota.semua.create');
 
+        // store
+        Route::post('semua/store', 'store')->name('admin.anggota.semua.store');
+
+        Route::get('semua/create/get-fakultas/{kampus_id}', [SemuaController::class, 'getFakultas']);
+        Route::get('semua/create/get-program-studi/{fakultas_id}', [SemuaController::class, 'getProgramStudi']);
+
+
+
+        // show
+        Route::get('semua/{id}/detail', 'show')->name('admin.anggota.semua.show');
+
+        // edit
+        Route::get('semua/{id}/edit', 'edit')->name('admin.anggota.semua.edit');
+
+        // update
+        Route::put('semua/{id}/update', 'update')->name('admin.anggota.semua.update');
+
+        // forceDelete | ForceDeletes > menghapus permanen dari database
+        Route::delete('semua/{id}/ForceDelete', 'forceDelete')->name('admin.anggota.semua.forceDelete');
 
     });
 

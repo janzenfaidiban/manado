@@ -95,6 +95,8 @@
   <!-- Kaiadmin JS -->
   <script src="{{ asset('assets/js/kaiadmin.min.js') }}"></script>
 
+  @stack('scripts')
+
 </body>
 
 </html>

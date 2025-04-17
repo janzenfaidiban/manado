@@ -17,16 +17,16 @@ class KampusController extends Controller
 {
 
     // index
-    // menampilkan halaman data kampus
+    // menampilkan halaman data 
     public function index()
     {
         // Ambil parameter pencarian
         $search = request()->search;
 
-        // Mulai query dari Kampus
+        // Mulai query dari 
         $query = Kampus::query();
         
-        // Jika ada pencarian, filter berdasarkan nama_kampus
+        // Jika ada pencarian, tambahkan kondisi where
         if ($search) {
             $query->where('nama_kampus', 'LIKE', '%' . $search . '%');
         }
@@ -47,39 +47,13 @@ class KampusController extends Controller
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     // create
     // menampilkan form tambah data
     public function create()
     {
 
-        $pageTitle = 'Semua Anggota';
-        $pageDescription = 'Menampilkan semua data anggota.';
+        $pageTitle = 'Tambah Kampus Baru';
+        $pageDescription = 'Formulir tambah data kampus baru.';
 
         return view('admin.kampus.form', compact(
             'pageTitle',
@@ -92,11 +66,11 @@ class KampusController extends Controller
     public function store(Request $request)
     {
 
-        // Validasi nama kampus
+        // Validasi 
         $request->validate([
             'nama_kampus' => 'required',
         ], [
-            'nama_kampus.required' => 'Nama kampus wajib dilengkapi.',
+            'nama_kampus.required' => 'Nama wajib dilengkapi.',
         ]);
 
         // Inisialisasi array data
@@ -108,7 +82,7 @@ class KampusController extends Controller
 
         Kampus::create($data);
 
-        return redirect()->route('admin.kampus.index')->with('success', 'Data kampus berhasil disimpan.');
+        return redirect()->route('admin.kampus.index')->with('success', 'Data berhasil disimpan.');
     }
 
     // show
@@ -119,7 +93,7 @@ class KampusController extends Controller
         $data = Kampus::findOrFail($id);
 
         $pageTitle = 'Detail Kampus';
-        $pageDescription = 'Menampilkan detail data kampus.';
+        $pageDescription = 'Menampilkan detail data.';
 
         return view('admin.kampus.detail', compact(
             'pageTitle',
@@ -135,7 +109,7 @@ class KampusController extends Controller
         $data = Kampus::findOrFail($id);
 
         $pageTitle = 'Ubah Kampus';
-        $pageDescription = 'Menampilkan formulir ubah data kampus.';
+        $pageDescription = 'Menampilkan formulir ubah data.';
 
         return view('admin.kampus.form', compact(
             'pageTitle',
@@ -151,14 +125,14 @@ class KampusController extends Controller
     // proses memperbarui data ke dalam database
     public function update(Request $request, $id)
     {
-        // Validasi nama kampus
+        // Validasi
         $request->validate([
             'nama_kampus' => 'required',
         ], [
-            'nama_kampus.required' => 'Nama kampus wajib dilengkapi.',
+            'nama_kampus.required' => 'Bagian ini wajib dilengkapi.',
         ]);
 
-        // Temukan data kampus berdasarkan ID
+        // Temukan data berdasarkan ID
         $kampus = Kampus::findOrFail($id);
 
         // Update data
@@ -167,7 +141,7 @@ class KampusController extends Controller
             'keterangan'  => $request->keterangan,
         ]);
 
-        return redirect()->route('admin.kampus.show', $id)->with('success', 'Data kampus berhasil diperbarui.');
+        return redirect()->route('admin.kampus.show', $id)->with('success', 'Data berhasil diperbarui.');
     }
 
 
@@ -187,7 +161,7 @@ class KampusController extends Controller
         // Force delete dari database
         $data->forceDelete();
 
-        return redirect()->route('admin.kampus.index')->with('success', 'Data kampus berhasil dihapus permanen.');
+        return redirect()->route('admin.kampus.index')->with('success', 'Data berhasil dihapus permanen.');
     }
 
 }

@@ -11,22 +11,25 @@ Route::prefix('programstudi')->group(function () {
         Route::get('/', 'index')->name('admin.programstudi.index');
         
         // menampilkan formulir tambah programstudi semua
-        Route::get('/semua/create', 'create')->name('admin.programstudi.create');
+        Route::get('/create', 'create')->name('admin.programstudi.create');
+
+        Route::get('/get-fakultas-by-kampus/{kampus_id}', 'getFakultasByKampus')->name('get.fakultas.by.kampus');
+
 
         // store
-        Route::post('semua/store', 'store')->name('admin.programstudi.store');
+        Route::post('store', 'store')->name('admin.programstudi.store');
 
         // show
-        Route::get('semua/{id}/detail', 'show')->name('admin.programstudi.show');
+        Route::get('{id}/detail', 'show')->name('admin.programstudi.show');
 
         // edit
-        Route::get('semua/{id}/edit', 'edit')->name('admin.programstudi.edit');
+        Route::get('{id}/edit', 'edit')->name('admin.programstudi.edit');
 
         // update
-        Route::put('semua/{id}/update', 'update')->name('admin.programstudi.update');
+        Route::put('{id}/update', 'update')->name('admin.programstudi.update');
 
         // forceDelete | ForceDeletes > menghapus permanen dari database
-        Route::delete('semua/{id}/ForceDelete', 'forceDelete')->name('admin.programstudi.forceDelete');
+        Route::delete('{id}/ForceDelete', 'forceDelete')->name('admin.programstudi.forceDelete');
 
     });
 

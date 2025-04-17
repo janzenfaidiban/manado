@@ -34,9 +34,9 @@
             <p>Dasbor</p>
             <span class="caret"></span>
           </a>
-          <div class="collapse" id="dasbor">
+          <div class="collapse @if(Request::segment(2) == 'dasbor' || Request::segment(2) == '') show @endif" id="dasbor">
             <ul class="nav nav-collapse">
-              <li>
+              <li @if(Request::segment(2) == 'dasbor' || Request::segment(2) == '') class="active" @endif>
                 <a href="{{ route('admin.dasbor') }}">
                   <span class="sub-item">Dasbor</span>
                 </a>
@@ -147,7 +147,7 @@
       
 
         <!-- anggota -->
-        <li class="nav-item active submenu">
+        <li class="nav-item submenu">
           <a data-bs-toggle="collapse" href="#anggota" class="collapsed" aria-expanded="false">
             <i class="fas fa-users"></i>
             <p>Anggota</p>
@@ -188,28 +188,28 @@
       
 
         <!-- data master -->
-        <li class="nav-item">
+        <li class="nav-item @if(Request::segment(2) == 'kampus' || Request::segment(2) == 'fakultas' || Request::segment(2) == 'programstudi') active @endif">
           <a data-bs-toggle="collapse" href="#data-master" class="collapsed" aria-expanded="false">
             <i class="fas fa-box"></i>
             <p>Data Master</p>
             <span class="caret"></span>
           </a>
-          <div class="collapse" id="data-master">
+          <div class="collapse @if(Request::segment(2) == 'kampus' || Request::segment(2) == 'fakultas' || Request::segment(2) == 'programstudi') show @endif" id="data-master">
             <ul class="nav nav-collapse">
               
-              <li>
+              <li @if(Request::segment(2) == 'kampus') class="active" @endif>
                 <a href="{{ route('admin.kampus.index') }}">
                   <span class="sub-item">Kampus</span>
                 </a>
               </li>
 
-              <li>
+              <li @if(Request::segment(2) == 'fakultas') class="active" @endif>
                 <a href="{{ route('admin.fakultas.index') }}">
                   <span class="sub-item">Fakultas</span>
                 </a>
               </li>
 
-              <li>
+              <li @if(Request::segment(2) == 'programstudi') class="active" @endif>
                 <a href="{{ route('admin.programstudi.index') }}">
                   <span class="sub-item">Program Studi</span>
                 </a>

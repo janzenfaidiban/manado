@@ -11,22 +11,22 @@ Route::prefix('fakultas')->group(function () {
         Route::get('/', 'index')->name('admin.fakultas.index');
         
         // menampilkan formulir tambah fakultas semua
-        Route::get('/semua/create', 'create')->name('admin.fakultas.create');
+        Route::get('/create', 'create')->name('admin.fakultas.create');
 
         // store
-        Route::post('semua/store', 'store')->name('admin.fakultas.store');
+        Route::post('store', 'store')->name('admin.fakultas.store');
 
         // show
-        Route::get('semua/{id}/detail', 'show')->name('admin.fakultas.show');
+        Route::get('{id}/detail', 'show')->name('admin.fakultas.show');
 
         // edit
-        Route::get('semua/{id}/edit', 'edit')->name('admin.fakultas.edit');
+        Route::get('{id}/edit', 'edit')->name('admin.fakultas.edit');
 
         // update
-        Route::put('semua/{id}/update', 'update')->name('admin.fakultas.update');
+        Route::put('{id}/update', 'update')->name('admin.fakultas.update');
 
         // forceDelete | ForceDeletes > menghapus permanen dari database
-        Route::delete('semua/{id}/ForceDelete', 'forceDelete')->name('admin.fakultas.forceDelete');
+        Route::delete('{id}/ForceDelete', 'forceDelete')->name('admin.fakultas.forceDelete');
 
     });
 

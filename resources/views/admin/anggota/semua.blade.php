@@ -61,19 +61,21 @@
                                                     <td>{{ \Carbon\Carbon::parse($item->tanggal_pendaftaran)->translatedFormat('l, d F Y') }}</td>
                                                     <td>
                                                         <div class="avatar avatar-xl">
-                                                            <img 
-                                                                src="{{ $item->foto ? asset('storage/' . $item->foto) : asset('assets/img/avatar-placeholder.png') }}" 
-                                                                alt="foto" 
-                                                                class="w-100 rounded-circle">
+                                                            <a href="#" data-bs-toggle="modal" data-bs-target="#fotoModal{{ $item->id }}">
+                                                                <img 
+                                                                    src="{{ $item->foto ? asset('storage/' . $item->foto) : asset('assets/img/avatar-placeholder.png') }}" 
+                                                                    alt="foto" 
+                                                                    class="w-100 rounded-circle">
+                                                            </a>
                                                         </div>
                                                     </td>
                                                     <td>{!! $item->nama_lengkap !!}</td>
                                                     <td>
-                                                        <a href="#" data-bs-toggle="modal" data-bs-target="#kpmModal{{ $item->id }}">Tampilkan</a>
+                                                        <a href="#" data-bs-toggle="modal" data-bs-target="#kpmModal{{ $item->id }}" class="fs-4" @if(!$item->kpm) style="color:#a6a6a6" @endif><i class="fa fa-id-card"></i></a>
                                                     </td>
                                                     <td>{!! $item->nim !!}</td>
                                                     <td>
-                                                        <a href="#" data-bs-toggle="modal" data-bs-target="#ktpModal{{ $item->id }}">Tampilkan</a>
+                                                        <a href="#" data-bs-toggle="modal" data-bs-target="#ktpModal{{ $item->id }}" class="fs-4" @if(!$item->ktp) style="color:#a6a6a6" @endif><i class="fa fa-id-card"></i></a>
                                                     </td>
                                                     <td>{!! $item->programstudi->fakultas->kampus->nama_kampus !!}</td>
                                                     <td>{!! $item->programstudi->fakultas->nama_fakultas !!}</td>
@@ -123,6 +125,12 @@
                                                     :id="$item->id" 
                                                     :nama="$item->nama_lengkap" 
                                                     :route="route('admin.anggota.semua.forceDelete', $item->id)" 
+                                                />
+
+                                                <x-foto-modal 
+                                                    :id="$item->id" 
+                                                    :nama="$item->nama_lengkap" 
+                                                    :foto="$item->foto" 
                                                 />
 
 

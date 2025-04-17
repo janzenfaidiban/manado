@@ -51,6 +51,11 @@ Route::group(['middleware' => ['auth']], function () {
         require 'admin/anggota/baru.php';
         require 'admin/anggota/pindahmasuk.php';
         require 'admin/anggota/pindahkeluar.php';
+        
+        // data master
+        require 'admin/datamaster/kampus.php';
+        require 'admin/datamaster/fakultas.php';
+        require 'admin/datamaster/programstudi.php';
 
     });
     

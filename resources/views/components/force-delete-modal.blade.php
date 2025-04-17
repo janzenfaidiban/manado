@@ -9,7 +9,7 @@
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Tutup"></button>
             </div>
             <div class="modal-body text-center">
-                <p>Apakah Anda yakin ingin <strong>menghapus permanen</strong> data anggota <strong>{{ $nama }}</strong>?<br>
+                <p>Apakah Anda yakin ingin <strong>menghapus permanen</strong> data <strong>{{ $nama }}</strong>?<br>
                 Tindakan ini tidak dapat dibatalkan.</p>
             </div>
             <div class="modal-footer">

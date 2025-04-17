@@ -198,19 +198,19 @@
             <ul class="nav nav-collapse">
               
               <li>
-                <a href="{{ route('admin.dasbor') }}">
+                <a href="{{ route('admin.kampus.index') }}">
                   <span class="sub-item">Kampus</span>
                 </a>
               </li>
 
               <li>
-                <a href="{{ route('admin.dasbor') }}">
+                <a href="{{ route('admin.fakultas.index') }}">
                   <span class="sub-item">Fakultas</span>
                 </a>
               </li>
 
               <li>
-                <a href="{{ route('admin.dasbor') }}">
+                <a href="{{ route('admin.programstudi.index') }}">
                   <span class="sub-item">Program Studi</span>
                 </a>
               </li>

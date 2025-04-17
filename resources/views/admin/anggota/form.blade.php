@@ -181,7 +181,7 @@
                                         <div class="d-block">
                                             <a href="#">
                                                 <img 
-                                                    src="{{ $data->kpm ? asset('storage/' . $data->kpm) : asset('assets/img/kartu-placeholder.png') }}" 
+                                                    src="{{ isset($data->kpm) ? asset('storage/' . $data->kpm) : asset('assets/img/kartu-placeholder.png') }}" 
                                                     alt="kpm" 
                                                     class="w-50 mb-3">
                                             </a>
@@ -206,7 +206,7 @@
                                         <div class="d-block">
                                             <a href="#">
                                                 <img 
-                                                    src="{{ $data->ktp ? asset('storage/' . $data->ktp) : asset('assets/img/kartu-placeholder.png') }}" 
+                                                    src="{{ isset($data->ktp) ? asset('storage/' . $data->ktp) : asset('assets/img/kartu-placeholder.png') }}" 
                                                     alt="ktp" 
                                                     class="w-50 mb-3">
                                             </a>
@@ -220,7 +220,7 @@
                                         <div class="avatar avatar-xl d-block mb-2">
                                             <a href="#">
                                                 <img 
-                                                    src="{{ $data->foto ? asset('storage/' . $data->foto) : asset('assets/img/avatar-placeholder.png') }}" 
+                                                    src="{{ isset($data->foto) ? asset('storage/' . $data->foto) : asset('assets/img/avatar-placeholder.png') }}" 
                                                     alt="foto" 
                                                     class="w-100 rounded-circle">
                                             </a>
@@ -254,8 +254,8 @@
 
                                     <!-- Submit Button -->
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary" id="submitButton">
-                                            <i class="fa fa-save"></i> Submit
+                                        <button type="submit" class="btn btn-dark" id="submitButton">
+                                            <i class="fa fa-save"></i> Simpan
                                         </button>
                                     
                                         <!-- Tombol Hapus -->
@@ -276,11 +276,15 @@
                                     
                                 <!-- form end -->
 
+                                @if(isset($data->id))
+
                                 <x-force-delete-modal 
                                     :id="$data->id" 
                                     :nama="$data->nama_lengkap" 
                                     :route="route('admin.anggota.semua.forceDelete', $data->id)" 
                                 />
+
+                                @endif
                                 
                                 </div>
                             </div>

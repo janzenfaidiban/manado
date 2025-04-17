@@ -95,7 +95,7 @@
                             <div class="form-group">
                                 <label for="kpm">Kartu Pegawai Mahasiswa (KPM)</label>
                                 <div class="d-block">
-                                    <a href="#">
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#kpmModal{{ $data->id }}">
                                         <img 
                                             src="{{ $data->kpm ? asset('storage/' . $data->kpm) : asset('assets/img/kartu-placeholder.png') }}" 
                                             alt="kpm" 
@@ -114,7 +114,7 @@
                             <div class="form-group">
                                 <label for="ktp">KTP</label>
                                 <div class="d-block">
-                                    <a href="#">
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#ktpModal{{ $data->id }}">
                                         <img 
                                             src="{{ $data->ktp ? asset('storage/' . $data->ktp) : asset('assets/img/kartu-placeholder.png') }}" 
                                             alt="ktp" 
@@ -127,7 +127,7 @@
                             <div class="form-group">
                                 <label for="foto">Foto Profil</label>
                                 <div class="avatar avatar-xl d-block mb-2">
-                                    <a href="#">
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#fotoModal{{ $data->id }}">
                                         <img 
                                             src="{{ $data->foto ? asset('storage/' . $data->foto) : asset('assets/img/avatar-placeholder.png') }}" 
                                             alt="foto" 
@@ -159,17 +159,40 @@
                             <!-- Buttons -->
                             <div class="form-group">
                             
-                                <!-- Tombol Hapus -->
-                                <a href="{{ route('admin.anggota.semua') }}" class="btn">
-                                    <i class="fa fa-arrow-left"></i> Kembali 
+                                <!-- Tombol Ubah -->
+                                <a href="{{ route('admin.anggota.semua.edit', $data->id) }}" class="btn btn-dark">
+                                    <i class="fa fa-edit"></i> Ubah 
                                 </a>
 
                                 <!-- Tombol Hapus -->
                                 <a href="#" class="btn" data-bs-toggle="modal" data-bs-target="#forceDeleteModal{{ $data->id }}" title="Hapus Permanen">
-                                    <i class="fa fa-trash"></i>
+                                    <i class="fa fa-trash"></i> Hapus
+                                </a>
+                            
+                                <!-- Tombol Kembali -->
+                                <a href="{{ route('admin.anggota.semua') }}" class="btn">
+                                    <i class="fa fa-arrow-left"></i> Kembali 
                                 </a>
 
                             </div>
+
+                            <x-kpm-modal 
+                                :id="$data->id" 
+                                :nama="$data->nama_lengkap" 
+                                :kpm="$data->kpm" 
+                            />
+
+                            <x-ktp-modal 
+                                :id="$data->id" 
+                                :nama="$data->nama_lengkap" 
+                                :ktp="$data->ktp" 
+                            />
+
+                            <x-foto-modal 
+                                :id="$data->id" 
+                                :nama="$data->nama_lengkap" 
+                                :foto="$data->foto" 
+                            />
 
                             <x-force-delete-modal 
                                 :id="$data->id" 

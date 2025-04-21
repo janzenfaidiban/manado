@@ -37,6 +37,8 @@ class SemuaController extends Controller
         // Urutkan berdasarkan nama_lengkap ascending dan paginasi
         $datas = $query->orderBy('nama_lengkap', 'asc')->paginate(10);
 
+        // dd($datas);
+
         $pageTitle = 'Semua Anggota';
         $pageDescription = 'Menampilkan semua data anggota.';
 

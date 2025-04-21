@@ -36,6 +36,6 @@ class Anggota extends Model
     // Relasi: Banyak anggota/mahasiswa dimiliki oleh satu program studi
     public function programstudi()
     {
-        return $this->belongsTo(ProgramStudi::class, 'program_studi_id');
+        return $this->belongsTo(ProgramStudi::class, 'program_studi_id', 'id');
     }
 }

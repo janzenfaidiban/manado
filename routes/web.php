@@ -47,10 +47,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/profil', [AdminDasborController::class, 'profil'])->name('admin.profil');
 
         
-        require 'admin/anggota/semua.php';
-        require 'admin/anggota/baru.php';
-        require 'admin/anggota/pindahmasuk.php';
-        require 'admin/anggota/pindahkeluar.php';
+        require 'admin/anggota/anggota.php';
+        // require 'admin/anggota/pindahkeluar.php';
+        // require 'admin/anggota/pindahmasuk.php';
         
         // data master
         require 'admin/datamaster/kampus.php';
@@ -93,10 +92,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/hak-cipta', [SiteInfoController::class, 'hakCipta'])->name('adminmaster.hakCipta');
         Route::get('/syarat-ketentuan', [SiteInfoController::class, 'syaratKetentuan'])->name('adminmaster.syaratKetentuan');
 
-        // main navigations
-        require 'AdminMaster/klasis.php';
-        require 'AdminMaster/jemaat.php';
-        require 'AdminMaster/profil.php';
 
     });
 
@@ -127,11 +122,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/hak-cipta', [SiteInfoController::class, 'hakCipta'])->name('adminklasis.hakCipta');
         Route::get('/syarat-ketentuan', [SiteInfoController::class, 'syaratKetentuan'])->name('adminklasis.syaratKetentuan');
 
-        // main navigations        
-        require 'AdminKlasis/jemaat.php';
-        require 'AdminKlasis/keluarga.php';
-        require 'AdminKlasis/profil.php';
-
     });
 
 
@@ -142,33 +132,6 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 
-
-
-
-
-
-
-
-
-    // Routes untuk Admin Jemaat
-    Route::group(['middleware' => ['role:adminjemaat'], 'prefix' => 'adminjemaat'], function () {
-        
-        Route::get('/', [BerandaAdminJemaatController::class, 'index'])->name('adminjemaat.beranda');
-        
-        // siteInfo
-        Route::get('/faq', [SiteInfoController::class, 'faq'])->name('adminjemaat.faq');
-        Route::get('/panduan', [SiteInfoController::class, 'panduan'])->name('adminjemaat.panduan');
-        Route::get('/peta-situs', [SiteInfoController::class, 'petaSitus'])->name('adminjemaat.petaSitus');
-        Route::get('/hak-cipta', [SiteInfoController::class, 'hakCipta'])->name('adminjemaat.hakCipta');
-        Route::get('/syarat-ketentuan', [SiteInfoController::class, 'syaratKetentuan'])->name('adminjemaat.syaratKetentuan');
-
-
-
-        
-        require 'AdminJemaat/keluarga.php';
-        require 'AdminJemaat/profil.php';
-
-    });
 
 
 

@@ -16,7 +16,7 @@ use App\Models\Kampus;
 use App\Models\Fakultas;
 use App\Models\ProgramStudi;
 
-class SemuaController extends Controller
+class AnggotaController extends Controller
 {
 
     // index
@@ -34,13 +34,41 @@ class SemuaController extends Controller
             $query->where('nama_lengkap', 'LIKE', '%' . $search . '%');
         }
         
+        $statusMap = [
+            'draft' => 'Draft',
+            'baru' => 'Baru',
+            'pindahkeluar' => 'Pindah Keluar',
+            'pindahmasuk' => 'Pindah Masuk',
+        ];
+        
+        $descriptionMap = [
+            'draft' => 'Menampilkan semua data anggota yang masih draft.',
+            'baru' => 'Menampilkan semua data anggota baru.',
+            'pindahkeluar' => 'Menampilkan data anggota yang telah pindah keluar.',
+            'pindahmasuk' => 'Menampilkan data anggota yang pindah masuk.',
+        ];
+        
+        $segment = request()->segment(3);
+        
+        // Default values
+        $pageTitle = 'Anggota';
+        $pageDescription = 'Menampilkan semua data anggota.';
+        
+        // Set jika segment cocok
+        if (isset($statusMap[$segment])) {
+            $pageTitle = 'Anggota ' . $statusMap[$segment];
+            $pageDescription = $descriptionMap[$segment] ?? $pageDescription;
+            
+            $query->where('status', $statusMap[$segment]);
+        }
+        
+
         // Urutkan berdasarkan nama_lengkap ascending dan paginasi
         $datas = $query->orderBy('nama_lengkap', 'asc')->paginate(10);
 
         // dd($datas);
 
-        $pageTitle = 'Semua Anggota';
-        $pageDescription = 'Menampilkan semua data anggota.';
+        
 
         return view('admin.anggota.index', compact(
             'pageTitle',
@@ -71,8 +99,8 @@ class SemuaController extends Controller
         $fakultas = Fakultas::all();
         $programstudi = ProgramStudi::all();
 
-        $pageTitle = 'Semua Anggota';
-        $pageDescription = 'Menampilkan semua data anggota.';
+        $pageTitle = 'Anggota Baru';
+        $pageDescription = 'Menampilkan semua data anggota baru.';
 
         return view('admin.anggota.form', compact(
             'pageTitle',
@@ -111,7 +139,7 @@ class SemuaController extends Controller
             'no_hp'               => $request->no_hp,
             'email'               => $request->email,
             'nim'                 => $request->nim,
-            'status_anggota'      => $request->status_anggota ?? 'Pending',
+            'status'              => $request->status ?? 'Draft',
             'alumni'              => $request->alumni,
             'keterangan'          => $request->keterangan,
         ];
@@ -130,7 +158,7 @@ class SemuaController extends Controller
 
         Anggota::create($data);
 
-        return redirect()->route('admin.anggota.semua')->with('success', 'Data anggota berhasil disimpan.');
+        return redirect()->route('admin.anggota.index')->with('success', 'Data anggota berhasil disimpan.');
     }
 
     // show
@@ -147,8 +175,8 @@ class SemuaController extends Controller
 
         // dd($data->programStudi);
 
-        $pageTitle = 'Semua Anggota';
-        $pageDescription = 'Menampilkan semua data anggota.';
+        $pageTitle = 'Anggota Baru';
+        $pageDescription = 'Menampilkan semua data anggota baru.';
 
         return view('admin.anggota.detail', compact(
             'pageTitle',
@@ -174,8 +202,8 @@ class SemuaController extends Controller
 
         // dd($data->programStudi);
 
-        $pageTitle = 'Semua Anggota';
-        $pageDescription = 'Menampilkan semua data anggota.';
+        $pageTitle = 'Anggota Baru';
+        $pageDescription = 'Menampilkan semua data anggota baru.';
 
         return view('admin.anggota.form', compact(
             'pageTitle',
@@ -192,6 +220,9 @@ class SemuaController extends Controller
     
     public function update(Request $request, $id)
     {
+
+        // dd($request->status);
+
         // Ambil data anggota berdasarkan ID
         $anggota = Anggota::findOrFail($id);
 
@@ -225,7 +256,7 @@ class SemuaController extends Controller
             'no_hp'               => $request->no_hp,
             'email'               => $request->email,
             'nim'                 => $request->nim,
-            'status_anggota'      => $request->status_anggota ?? 'Pending',
+            'status'              => $request->status,
             'alumni'              => $request->alumni,
             'keterangan'          => $request->keterangan,
         ];
@@ -245,6 +276,7 @@ class SemuaController extends Controller
 
         // Update data anggota
         $anggota->update($data);
+
 
         return redirect()->back()->with('success', 'Data anggota berhasil diperbarui.');
     }
@@ -281,7 +313,7 @@ class SemuaController extends Controller
         // Force delete dari database
         $anggota->forceDelete();
 
-        return redirect()->route('admin.anggota.semua')->with('success', 'Data anggota berhasil dihapus permanen.');
+        return redirect()->route('admin.anggota.index')->with('success', 'Data anggota berhasil dihapus permanen.');
     }
 
 }

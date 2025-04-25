@@ -22,7 +22,7 @@
 
                                     <!-- form start -->
 
-                                    <form action="{{ isset($data) ? route('admin.anggota.semua.update', $data->id) : route('admin.anggota.semua.store') }}" enctype="multipart/form-data" method="POST">
+                                    <form action="{{ isset($data) ? route('admin.anggota.update', $data->id) : route('admin.anggota.store') }}" enctype="multipart/form-data" method="POST">
                                     @csrf
                                     @if(isset($data))
                                         @method('PUT') <!-- Method PUT untuk update -->
@@ -228,13 +228,19 @@
                                         <input type="file" class="form-control" id="foto" name="foto">
                                     </div>
 
-                                    <!-- Status Anggota -->
+                                    <!-- Status -->
+                                    @php
+                                        $statuses = ['Draft', 'Baru', 'Pindah Masuk', 'Pindah Keluar'];
+                                    @endphp
+
                                     <div class="form-group">
-                                        <label for="status_anggota">Status Anggota</label>
-                                        <select class="form-select" id="status_anggota" name="status_anggota">
-                                            <option value="Aktif" {{ old('status_anggota', isset($data) ? $data->status_anggota : '') == 'Aktif' ? 'selected' : '' }}>Aktif</option>
-                                            <option value="Nonaktif" {{ old('status_anggota', isset($data) ? $data->status_anggota : '') == 'Nonaktif' ? 'selected' : '' }}>Nonaktif</option>
-                                            <option value="Pending" {{ old('status_anggota', isset($data) ? $data->status_anggota : '') == 'Pending' ? 'selected' : '' }}>Pending</option>
+                                        <label for="status">Status</label>
+                                        <select class="form-select" id="status" name="status">
+                                            @foreach ($statuses as $status)
+                                                <option value="{{ $status }}" {{ old('status', $data->status ?? '') == $status ? 'selected' : '' }}>
+                                                    {{ $status }}
+                                                </option>
+                                            @endforeach
                                         </select>
                                     </div>
 
@@ -259,7 +265,7 @@
                                         </button>
                                     
                                         <!-- Tombol Hapus -->
-                                        <a href="{{ route('admin.anggota.semua') }}" class="btn">
+                                        <a href="{{ route('admin.anggota') }}" class="btn">
                                             <i class="fa fa-arrow-left"></i> Kembali 
                                         </a>
 
@@ -281,7 +287,7 @@
                                 <x-force-delete-modal 
                                     :id="$data->id" 
                                     :nama="$data->nama_lengkap" 
-                                    :route="route('admin.anggota.semua.forceDelete', $data->id)" 
+                                    :route="route('admin.anggota.forceDelete', $data->id)" 
                                 />
 
                                 @endif

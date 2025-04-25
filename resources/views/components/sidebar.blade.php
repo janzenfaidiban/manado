@@ -147,7 +147,7 @@
       
 
         <!-- anggota -->
-        <li class="nav-item submenu">
+        <li class="nav-item submenu @if(Request::segment(2) == 'anggota') active @endif" ">
           <a data-bs-toggle="collapse" href="#anggota" class="collapsed" aria-expanded="false">
             <i class="fas fa-users"></i>
             <p>Anggota</p>
@@ -156,8 +156,8 @@
           <div class="collapse @if(Request::segment(2) == 'anggota') show @endif" id="anggota">
             <ul class="nav nav-collapse">
               
-              <li @if(Request::segment(3) == 'semua') class="active" @endif>
-                <a href="{{ route('admin.anggota.semua') }}">
+              <li @if(Request::segment(2) == 'anggota' && Request::segment(3) == '') class="active" @endif>
+                <a href="{{ route('admin.anggota') }}">
                   <span class="sub-item">Semua Anggota</span>
                 </a>
               </li>
@@ -177,6 +177,12 @@
               <li @if(Request::segment(3) == 'pindahkeluar') class="active" @endif>
                 <a href="{{ route('admin.anggota.pindahkeluar') }}">
                   <span class="sub-item">Pindah Keluar</span>
+                </a>
+              </li>
+
+              <li @if(Request::segment(3) == 'draft') class="active" @endif>
+                <a href="{{ route('admin.anggota.draft') }}">
+                  <span class="sub-item">Draft</span>
                 </a>
               </li>
 

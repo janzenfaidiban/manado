@@ -21,10 +21,10 @@
 
                                     <!-- toolbar -->
                                     <x-admin.toolbar 
-                                        :btnCreate="route('admin.anggota.semua.create')"
+                                        :btnCreate="route('admin.anggota.create')"
                                         :formAction="Request::segment(3) == 'trash' 
                                             ? route('admin.anggota.trash') 
-                                            : route('admin.anggota.semua')"
+                                            : route('admin.anggota')"
                                     />
 
                                     <!-- table-responsieve start -->
@@ -48,7 +48,7 @@
                                                     <th>Alamat Tinggal</th>
                                                     <th>Nomor HP</th>
                                                     <th>Email</th>
-                                                    <th>Status Anggota</th>
+                                                    <th>Status</th>
                                                     <th>Alumni</th>
                                                     <th>Keterangan</th>
                                                     <th>Opsi</th>
@@ -88,15 +88,15 @@
                                                     <td>{!! $item->alamat_tinggal !!}</td>
                                                     <td>{!! $item->no_hp !!}</td>
                                                     <td>{!! $item->email !!}</td>
-                                                    <td>{!! $item->status_anggota !!}</td>
+                                                    <td>{!! $item->status !!}</td>
                                                     <td>{!! $item->alumni !!}</td>
                                                     <td>{!! $item->keterangan !!}</td>
                                                     <td>
                                                         <div class="d-flex align-items-center">
-                                                            <a href="{{ route('admin.anggota.semua.show', $item->id) }}" class="btn btn-sm" title="Detail">
+                                                            <a href="{{ route('admin.anggota.show', $item->id) }}" class="btn btn-sm" title="Detail">
                                                                 <i class="fa fa-eye"></i> 
                                                             </a>
-                                                            <a href="{{ route('admin.anggota.semua.edit', $item->id) }}" class="btn btn-sm" title="Ubah">
+                                                            <a href="{{ route('admin.anggota.edit', $item->id) }}" class="btn btn-sm" title="Ubah">
                                                                 <i class="fa fa-edit"></i> 
                                                             </a>
 
@@ -124,7 +124,7 @@
                                                 <x-force-delete-modal 
                                                     :id="$item->id" 
                                                     :nama="$item->nama_lengkap" 
-                                                    :route="route('admin.anggota.semua.forceDelete', $item->id)" 
+                                                    :route="route('admin.anggota.forceDelete', $item->id)" 
                                                 />
 
                                                 <x-foto-modal 

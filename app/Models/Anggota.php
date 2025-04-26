@@ -28,7 +28,7 @@ class Anggota extends Model
         'kpm',
         'nim',
         'ktp',
-        'status_anggota',
+        'status',
         'alumni',
         'keterangan',
     ];

@@ -49,7 +49,9 @@
                                                     <th>Nomor HP</th>
                                                     <th>Email</th>
                                                     <th>Status</th>
+                                                    @if(Request::segment(3) == '' || Request::segment(3) == 'alumni')
                                                     <th>Alumni</th>
+                                                    @endif
                                                     <th>Keterangan</th>
                                                     <th>Opsi</th>
                                                 </tr>
@@ -89,7 +91,10 @@
                                                     <td>{!! $item->no_hp !!}</td>
                                                     <td>{!! $item->email !!}</td>
                                                     <td>{!! $item->status !!}</td>
+                                                    
+                                                    @if(Request::segment(3) == '' || Request::segment(3) == 'alumni' )
                                                     <td>{!! $item->alumni !!}</td>
+                                                    @endif
                                                     <td>{!! $item->keterangan !!}</td>
                                                     <td>
                                                         <div class="d-flex align-items-center">

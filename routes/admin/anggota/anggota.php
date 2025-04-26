@@ -20,14 +20,14 @@ Route::prefix('anggota')->group(function () {
         // filter status=Pindah Masuk
         Route::prefix('pindahmasuk')->group(function () {
 
-            Route::get('/', 'index')->name('admin.anggota.pindahmasuk');
+            Route::get('/', 'index')->name('admin.anggota.pindahMasuk');
 
         });
 
         // filter status=Pindah Keluar
         Route::prefix('pindahkeluar')->group(function () {
 
-            Route::get('/', 'index')->name('admin.anggota.pindahkeluar');
+            Route::get('/', 'index')->name('admin.anggota.pindahKeluar');
 
         });
 
@@ -35,6 +35,13 @@ Route::prefix('anggota')->group(function () {
         Route::prefix('draft')->group(function () {
 
             Route::get('/', 'index')->name('admin.anggota.draft');
+
+        });
+
+        // filter status=Alumni
+        Route::prefix('alumni')->group(function () {
+
+            Route::get('/', 'index')->name('admin.anggota.alumni');
 
         });
             

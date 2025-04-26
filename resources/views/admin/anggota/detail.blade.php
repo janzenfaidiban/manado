@@ -138,13 +138,13 @@
 
                             <!-- Status Anggota -->
                             <div class="form-group">
-                                <label for="status_anggota">Status Anggota</label>
-                                <p>{{ $data->status_anggota ?? '-' }}</p>
+                                <label for="status">Status</label>
+                                <p id="statusValue">{{ $data->status ?? '-' }}</p>
                             </div>
 
                             <!-- Alumni -->
-                            <div class="form-group">
-                                <label for="alumni">Alumni</label>
+                            <div class="form-group" id="alumniGroup" style="display: none;">
+                                <label for="alumni">Menjadi alumni pada tahun</label>
                                 <p>{{ $data->alumni ?? '-' }}</p>
                             </div>
 
@@ -160,7 +160,7 @@
                             <div class="form-group">
                             
                                 <!-- Tombol Ubah -->
-                                <a href="{{ route('admin.anggota.semua.edit', $data->id) }}" class="btn btn-dark">
+                                <a href="{{ route('admin.anggota.edit', $data->id) }}" class="btn btn-dark">
                                     <i class="fa fa-edit"></i> Ubah 
                                 </a>
 
@@ -170,7 +170,7 @@
                                 </a>
                             
                                 <!-- Tombol Kembali -->
-                                <a href="{{ route('admin.anggota.semua') }}" class="btn">
+                                <a href="{{ route('admin.anggota') }}" class="btn">
                                     <i class="fa fa-arrow-left"></i> Kembali 
                                 </a>
 
@@ -197,7 +197,7 @@
                             <x-force-delete-modal 
                                 :id="$data->id" 
                                 :nama="$data->nama_lengkap" 
-                                :route="route('admin.anggota.semua.forceDelete', $data->id)" 
+                                :route="route('admin.anggota.forceDelete', $data->id)" 
                             />
 
                         </div>
@@ -210,3 +210,19 @@
 </div>
 
 @endsection
+
+@push('scripts')
+<script>
+    // Ambil nilai status
+    var status = document.getElementById('statusValue').innerText;
+
+    // Cek apakah status adalah "alumni"
+    if (status.toLowerCase() === 'alumni') {
+        // Tampilkan elemen "alumni"
+        document.getElementById('alumniGroup').style.display = 'block';
+    } else {
+        // Sembunyikan elemen "alumni"
+        document.getElementById('alumniGroup').style.display = 'none';
+    }
+</script>
+@endpush 

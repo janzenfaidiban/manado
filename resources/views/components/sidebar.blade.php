@@ -53,31 +53,37 @@
           <span class="sidebar-mini-icon">
             <i class="fa fa-ellipsis-h"></i>
           </span>
-          <h4 class="text-section">Rekapan & Laporan</h4>
+          <h4 class="text-section">Statistik</h4>
         </li>
 
 
       
 
         <!-- Ringkasan Statistik -->
-        <li class="nav-item">
+        <li class="nav-item @if(Request::segment(2) == 'statistik') active @endif">
           <a data-bs-toggle="collapse" href="#ringkasan-statistik" class="collapsed" aria-expanded="false">
-            <i class="fas fa-tag"></i>
+            <i class="fas fa-chart-bar"></i>
             <p>Ringkasan Statistik</p>
             <span class="caret"></span>
           </a>
-          <div class="collapse" id="ringkasan-statistik">
+          <div class="collapse @if(Request::segment(2) == 'statistik') show @endif" id="ringkasan-statistik">
             <ul class="nav nav-collapse">
               
-              <li>
-                <a href="{{ route('admin.dasbor') }}">
-                  <span class="sub-item">Statistik Fakultas dan Program Studi</span>
+              <li @if(Request::segment(2) == 'statistik' && Request::segment(3) == 'anggota') class="active" @endif">
+                <a href="{{ route('statistik.anggota') }}">
+                  <span class="sub-item">Statistik Anggota Berdasarkan Status</span>
                 </a>
               </li>
               
-              <li>
-                <a href="{{ route('admin.dasbor') }}">
-                  <span class="sub-item">Ringkasan Statistik</span>
+              <li @if(Request::segment(2) == 'statistik' && Request::segment(3) == 'alumni') class="active" @endif">
+                <a href="{{ route('statistik.alumni') }}">
+                  <span class="sub-item">Statistik Alumni</span>
+                </a>
+              </li>
+              
+              <li @if(Request::segment(2) == 'statistik' && Request::segment(3) == 'program-studi') class="active" @endif">
+                <a href="{{ route('statistik.programstudi') }}">
+                  <span class="sub-item">Statistik Program Studi, Fakultas & Universitas</span>
                 </a>
               </li>
 
@@ -86,51 +92,6 @@
         </li>
 
 
-      
-
-        <!-- rekapan -->
-        <li class="nav-item">
-          <a data-bs-toggle="collapse" href="#rekapan" class="collapsed" aria-expanded="false">
-            <i class="fas fa-tag"></i>
-            <p>Rekapan Data</p>
-            <span class="caret"></span>
-          </a>
-          <div class="collapse" id="rekapan">
-            <ul class="nav nav-collapse">
-              
-              <li>
-                <a href="{{ route('admin.dasbor') }}">
-                  <span class="sub-item">Anggota Aktif</span>
-                </a>
-              </li>
-              
-              <li>
-                <a href="{{ route('admin.dasbor') }}">
-                  <span class="sub-item">Anggota Pindah Masuk</span>
-                </a>
-              </li>
-              
-              <li>
-                <a href="{{ route('admin.dasbor') }}">
-                  <span class="sub-item">Anggota Pindah Keluar</span>
-                </a>
-              </li>
-
-              <li>
-                <a href="{{ route('admin.dasbor') }}">
-                  <span class="sub-item">Alumni Berdasarkan Kampus</span>
-                </a>
-              </li>
-
-              <li>
-                <a href="{{ route('admin.dasbor') }}">
-                  <span class="sub-item">Alumni Berdasarkan Kampus</span>
-                </a>
-              </li>
-
-            </ul>
-          </div>
-        </li>
 
 
 
@@ -169,13 +130,13 @@
               </li>
 
               <li @if(Request::segment(3) == 'pindahmasuk') class="active" @endif>
-                <a href="{{ route('admin.anggota.pindahmasuk') }}">
+                <a href="{{ route('admin.anggota.pindahMasuk') }}">
                   <span class="sub-item">Pindah Masuk</span>
                 </a>
               </li>
 
               <li @if(Request::segment(3) == 'pindahkeluar') class="active" @endif>
-                <a href="{{ route('admin.anggota.pindahkeluar') }}">
+                <a href="{{ route('admin.anggota.pindahKeluar') }}">
                   <span class="sub-item">Pindah Keluar</span>
                 </a>
               </li>
@@ -183,6 +144,12 @@
               <li @if(Request::segment(3) == 'draft') class="active" @endif>
                 <a href="{{ route('admin.anggota.draft') }}">
                   <span class="sub-item">Draft</span>
+                </a>
+              </li>
+
+              <li @if(Request::segment(3) == 'alumni') class="active" @endif>
+                <a href="{{ route('admin.anggota.alumni') }}">
+                  <span class="sub-item">Alumni</span>
                 </a>
               </li>
 

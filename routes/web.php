@@ -46,10 +46,19 @@ Route::group(['middleware' => ['auth']], function () {
         // profil
         Route::get('/profil', [AdminDasborController::class, 'profil'])->name('admin.profil');
 
+        // STATISTIK
+
+        // Statistik Anggota Berdasarkan Status
+        Route::get('/statistik/anggota', [AdminDasborController::class, 'getStatistikAnggota'])->name('statistik.anggota');
+        
+        // Statistik Alumni
+        Route::get('/statistik/alumni', [AdminDasborController::class, 'getStatistikAlumni'])->name('statistik.alumni');
+        
+        // Statistik Program Studi, Fakultas & Universitas
+        Route::get('/statistik/program-studi', [AdminDasborController::class, 'getStatistikProgramStudi'])->name('statistik.programstudi');
+
         
         require 'admin/anggota/anggota.php';
-        // require 'admin/anggota/pindahkeluar.php';
-        // require 'admin/anggota/pindahmasuk.php';
         
         // data master
         require 'admin/datamaster/kampus.php';

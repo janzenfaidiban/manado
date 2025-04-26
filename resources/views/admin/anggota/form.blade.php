@@ -228,14 +228,17 @@
                                         <input type="file" class="form-control" id="foto" name="foto">
                                     </div>
 
+                                    
+
+
                                     <!-- Status -->
                                     @php
-                                        $statuses = ['Draft', 'Baru', 'Pindah Masuk', 'Pindah Keluar'];
+                                        $statuses = ['Draft', 'Baru', 'Pindah Masuk', 'Pindah Keluar', 'Alumni'];
                                     @endphp
 
                                     <div class="form-group">
                                         <label for="status">Status</label>
-                                        <select class="form-select" id="status" name="status">
+                                        <select class="form-select" id="status" name="status" onchange="toggleAlumniField()">
                                             @foreach ($statuses as $status)
                                                 <option value="{{ $status }}" {{ old('status', $data->status ?? '') == $status ? 'selected' : '' }}>
                                                     {{ $status }}
@@ -245,10 +248,11 @@
                                     </div>
 
                                     <!-- Alumni -->
-                                    <div class="form-group">
+                                    <div class="form-group" id="alumni-field" style="display: none;">
                                         <label for="alumni">Alumni</label>
-                                        <input type="number" class="form-control" id="alumni" name="alumni" placeholder="Enter alumni number" value="{{ old('alumni', isset($data) ? $data->alumni : '') }}">
+                                        <input type="number" class="form-control" id="alumni" name="alumni" placeholder="Year" value="{{ old('alumni', isset($data) ? $data->alumni : '') }}">
                                     </div>
+
 
                                     <!-- Keterangan -->
                                     <div class="form-group">
@@ -318,7 +322,7 @@
 
         if (kampusId) {
             $.ajax({
-                url: `/admin/anggota/semua/create/get-fakultas/${kampusId}`,
+                url: `/admin/anggota/create/get-fakultas/${kampusId}`,
                 type: "GET",
                 dataType: "json",
                 success: function (data) {
@@ -342,7 +346,7 @@
 
         if (fakultasId) {
             $.ajax({
-                url: `/admin/anggota/semua/create/get-program-studi/${fakultasId}`,
+                url: `/admin/anggota/create/get-program-studi/${fakultasId}`,
                 type: "GET",
                 dataType: "json",
                 success: function (data) {
@@ -403,6 +407,27 @@ document.getElementById('submitButton').addEventListener('click', function(event
         }
     }
 });
+</script>
+
+
+<script>
+    // Fungsi untuk menampilkan atau menyembunyikan field alumni
+    function toggleAlumniField() {
+        var status = document.getElementById('status').value; // Ambil nilai status
+        var alumniField = document.getElementById('alumni-field'); // Ambil elemen alumni field
+
+        // Jika status adalah 'Alumni', tampilkan input alumni, jika tidak sembunyikan
+        if (status === 'Alumni') {
+            alumniField.style.display = 'block';
+        } else {
+            alumniField.style.display = 'none';
+        }
+    }
+
+    // Jalankan fungsi saat halaman dimuat untuk memastikan kondisi awal sesuai
+    window.onload = function() {
+        toggleAlumniField();
+    }
 </script>
 
 @endpush

@@ -39,6 +39,7 @@ class AnggotaController extends Controller
             'baru' => 'Baru',
             'pindahkeluar' => 'Pindah Keluar',
             'pindahmasuk' => 'Pindah Masuk',
+            'alumni' => 'Alumni',
         ];
         
         $descriptionMap = [
@@ -46,6 +47,7 @@ class AnggotaController extends Controller
             'baru' => 'Menampilkan semua data anggota baru.',
             'pindahkeluar' => 'Menampilkan data anggota yang telah pindah keluar.',
             'pindahmasuk' => 'Menampilkan data anggota yang pindah masuk.',
+            'alumni' => 'Menampilkan data anggota yang sudah menjadi alumni.',
         ];
         
         $segment = request()->segment(3);
@@ -158,7 +160,7 @@ class AnggotaController extends Controller
 
         Anggota::create($data);
 
-        return redirect()->route('admin.anggota.index')->with('success', 'Data anggota berhasil disimpan.');
+        return redirect()->route('admin.anggota')->with('success', 'Data anggota berhasil disimpan.');
     }
 
     // show
@@ -220,12 +222,8 @@ class AnggotaController extends Controller
     
     public function update(Request $request, $id)
     {
-
-        // dd($request->status);
-
         // Ambil data anggota berdasarkan ID
         $anggota = Anggota::findOrFail($id);
-
 
         // Validasi NIM dan Email harus unik, kecuali untuk ID yang sedang diedit
         $request->validate([
@@ -263,23 +261,37 @@ class AnggotaController extends Controller
 
         // Cek dan simpan file jika diupload
         if ($request->hasFile('kpm')) {
+            // Simpan file baru dan hapus file lama jika ada
+            if ($anggota->kpm) {
+                Storage::delete('public/' . $anggota->kpm);
+            }
             $data['kpm'] = $request->file('kpm')->store('uploads/kpm', 'public');
         }
 
         if ($request->hasFile('ktp')) {
+            // Simpan file baru dan hapus file lama jika ada
+            if ($anggota->ktp) {
+                Storage::delete('public/' . $anggota->ktp);
+            }
             $data['ktp'] = $request->file('ktp')->store('uploads/ktp', 'public');
         }
 
         if ($request->hasFile('foto')) {
+            // Simpan file baru dan hapus file lama jika ada
+            if ($anggota->foto) {
+                Storage::delete('public/' . $anggota->foto);
+            }
             $data['foto'] = $request->file('foto')->store('uploads/foto', 'public');
         }
+
+        // dd($data);
 
         // Update data anggota
         $anggota->update($data);
 
-
         return redirect()->back()->with('success', 'Data anggota berhasil diperbarui.');
     }
+
 
     // softDelete
     // proses hapus data secara sementara (masukan ke dalam tempat sampah)

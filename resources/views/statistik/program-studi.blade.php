@@ -19,7 +19,7 @@
                 <div class="page-category">
 
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-4">
                             <div class="card">
                                 <div class="card-body">
                                     <h3>Jumlah Anggota per Program Studi</h3>
@@ -28,11 +28,7 @@
                             </div>
                         </div>
                         <!-- .col end -->
-                    </div>
-                    <!-- .row end -->
-
-                    <div class="row">
-                        <div class="col-12">
+                        <div class="col-8">
                             <div class="card">
                                 <div class="card-body">
                                     <h3>Tabel Total Anggota Berdasarkan Program Studi Pada Fakultas dan Universitas</h3>

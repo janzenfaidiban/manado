@@ -78,8 +78,8 @@
                                 <input type="text" id="emailaddress" name="email" class="form-control form-control-lg" placeholder="Alamat email">
 
                                 @error('email')
-                                        <p class="text-danger">{{ $message }}</p>
-                                    @enderror
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
                             </div>
 
                             <div class="form-group mb-3">

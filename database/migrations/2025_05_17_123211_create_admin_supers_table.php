@@ -11,14 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kampuses', function (Blueprint $table) {
+        Schema::create('admin_supers', function (Blueprint $table) {
             $table->id();
-
-            $table->string('nama_kampus');
+            $table->unsignedBigInteger('user_id');
+            $table->string('nama_lengkap');
+            $table->string('no_hp');
+            $table->string('email')->unique();
             $table->text('keterangan')->nullable();
-            
             $table->timestamps();
-            $table->softDeletes(); // enable soft delete
+
+            // Foreign key jika tabel users ada
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kampuses');
+        Schema::dropIfExists('admin_supers');
     }
 };

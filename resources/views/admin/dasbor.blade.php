@@ -31,100 +31,50 @@
                     <!-- .row end -->
 
                     <div class="row">
-                        <div class="col-lg-2">
+                        <div class="col-lg-3">
                             <div class="card bg-success">
                                 <div class="card-body text-center">
-                                    <span class="d-block text-light text-uppercase">Semua Anggota</span>
-                                    <div class="display-3 text-white">{{ $anggotaTotal ?? '' }}</div>
-                                    <a href="{{ route('admin.anggota') }}" class="text-white"><i class="fas fa-arrow-right"></i> Tampilkan</a>
+                                    <span class="d-block text-light text-uppercase">Total Jemaat</span>
+                                    <div class="display-3 text-white">{{ $totalJemaat ?? '' }}</div>
+                                    <a href="{{ route('jemaat.index') }}" class="text-white"><i class="fas fa-arrow-right"></i> Tampilkan</a>
                                 </div>
                             </div>
                         </div>
                         <!-- .col end -->
-                        <div class="col-lg-2">
+                        
+                        <div class="col-lg-3">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <span class="d-block text-muted text-uppercase">Anggota Baru</span>
-                                    <div class="display-3 text-primary">{{ $anggotaBaru ?? '' }}</div>
-                                    <a href="{{ route('admin.anggota.baru') }}"><i class="fas fa-arrow-right"></i> Tampilkan</a>
+                                    <span class="d-block text-muted text-uppercase">Total Majelis</span>
+                                    <div class="display-3 text-primary">{{ $totalMajelis ?? '' }}</div>
+                                    <a href="{{ route('majelis.index') }}"><i class="fas fa-arrow-right"></i> Tampilkan</a>
                                 </div>
                             </div>
                         </div>
                         <!-- .col end -->
-                        <div class="col-lg-2">
+                        
+                        <div class="col-lg-3">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <span class="d-block text-muted text-uppercase">Pindah Masuk</span>
-                                    <div class="display-3 text-primary">{{ $anggotaPindahMasuk ?? '' }}</div>
-                                    <a href="{{ route('admin.anggota.pindahMasuk') }}"><i class="fas fa-arrow-right"></i> Tampilkan</a>
+                                    <span class="d-block text-muted text-uppercase">Total Pendeta</span>
+                                    <div class="display-3 text-primary">{{ $totalPendeta ?? '' }}</div>
+                                    <a href="{{ route('pendeta.index') }}"><i class="fas fa-arrow-right"></i> Tampilkan</a>
                                 </div>
                             </div>
                         </div>
                         <!-- .col end -->
-                        <div class="col-lg-2">
+                        
+                        <div class="col-lg-3">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <span class="d-block text-muted text-uppercase">Pindah Keluar</span>
-                                    <div class="display-3 text-primary">{{ $anggotaPindahKeluar ?? '' }}</div>
-                                    <a href="{{ route('admin.anggota.pindahKeluar') }}"><i class="fas fa-arrow-right"></i> Tampilkan</a>
+                                    <span class="d-block text-muted text-uppercase">Total Admin</span>
+                                    <div class="display-3 text-primary">{{ $totalAdminSuper ?? '' }}</div>
+                                    <a href="{{ route('admin.index') }}"><i class="fas fa-arrow-right"></i> Tampilkan</a>
                                 </div>
                             </div>
                         </div>
                         <!-- .col end -->
-                        <div class="col-lg-2">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <span class="d-block text-muted text-uppercase">Alumni</span>
-                                    <div class="display-3 text-primary">{{ $anggotaAlumni ?? '' }}</div>
-                                    <a href="{{ route('admin.anggota.alumni') }}"><i class="fas fa-arrow-right"></i> Tampilkan</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- .col end -->
-                        <div class="col-lg-2">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <span class="d-block text-muted text-uppercase">Draft</span>
-                                    <div class="display-3 text-primary">{{ $anggotaDraft ?? '' }}</div>
-                                    <a href="{{ route('admin.anggota.draft') }}"><i class="fas fa-arrow-right"></i> Tampilkan</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- .col end -->
-                    </div>
-                    <!-- .row end -->
-
-                    <div class="row">
-                        <div class="col-lg-2">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <span class="d-block text-muted text-uppercase">Kampus</span>
-                                    <div class="display-3 text-muted">{{ $totalKampus ?? '' }}</div>
-                                    <a href="{{ route('admin.kampus.index') }}" class="text-muted"><i class="fas fa-arrow-right"></i> Tampilkan</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- .col end -->
-                        <div class="col-lg-2">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <span class="d-block text-muted text-uppercase">Fakultas</span>
-                                    <div class="display-3 text-muted">{{ $totalFakultas ?? '' }}</div>
-                                    <a href="{{ route('admin.fakultas.index') }}" class="text-muted"><i class="fas fa-arrow-right"></i> Tampilkan</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- .col end -->
-                        <div class="col-lg-2">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <span class="d-block text-muted text-uppercase">Program Studi</span>
-                                    <div class="display-3 text-muted">{{ $totalProgramStudi ?? '' }}</div>
-                                    <a href="{{ route('admin.programstudi.index') }}" class="text-muted"><i class="fas fa-arrow-right"></i> Tampilkan</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- .col end -->
+                        
                     </div>
                     <!-- .row end -->
 

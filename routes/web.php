@@ -39,34 +39,15 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     // admin
-    // routes untuk admin
+    // routes untuk admin super
     Route::group(['middleware' => ['role:admin'], 'prefix' => 'admin'], function () {
-        
-        // dasbor
-        Route::get('/', [AdminDasborController::class, 'index'])->name('admin.dasbor');
-        Route::get('/dasbor', [AdminDasborController::class, 'index'])->name('admin.dasbor');
-        
-        // profil
-        Route::get('/profil', [AdminDasborController::class, 'profil'])->name('admin.profil');
 
-        // STATISTIK
+        Route::get('/dasbor', [adminDasborController::class, 'index'])->name('admin.dasbor');
 
-        // Statistik Anggota Berdasarkan Status
-        Route::get('/statistik/anggota', [AdminDasborController::class, 'getStatistikAnggota'])->name('admin.statistik.anggota');
-        
-        // Statistik Alumni
-        Route::get('/statistik/alumni', [AdminDasborController::class, 'getStatistikAlumni'])->name('admin.statistik.alumni');
-        
-        // Statistik Program Studi, Fakultas & Universitas
-        Route::get('/statistik/program-studi', [AdminDasborController::class, 'getStatistikProgramStudi'])->name('admin.statistik.programstudi');
-
-        
-        require 'admin/anggota/anggota.php';
-        
-        // data master
-        require 'admin/datamaster/kampus.php';
-        require 'admin/datamaster/fakultas.php';
-        require 'admin/datamaster/programstudi.php';
+        require 'pendeta.php';
+        require 'majelis.php';
+        require 'jemaat.php';
+        require 'admin-super.php';
 
     });
     

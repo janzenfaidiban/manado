@@ -13,16 +13,32 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
+        // role: admin super
         Role::create([
             'name' => 'admin',
             'guard_name' => 'web',
             'desc' => 'Akun utama sebagai pengelola sistem secara keseluruhan termasuk mengelola data dasar dan data anggota.',
         ]);
 
+        // role: pendeta
         Role::create([
-            'name' => 'pimpinan',
+            'name' => 'pendeta',
             'guard_name' => 'web',
-            'desc' => 'Akun pimpinan yang bertugas untuk melihat laporan data dan mengawasi sistem informasi.',
+            'desc' => 'Akun dengan level Pendeta',
+        ]);
+        
+        // role: majelis
+        Role::create([
+            'name' => 'majelis',
+            'guard_name' => 'web',
+            'desc' => 'Akun dengan level Majelis',
+        ]);
+
+        // role: jemaat
+        Role::create([
+            'name' => 'jemaat',
+            'guard_name' => 'web',
+            'desc' => 'Jemaat adalah anggota gereja yang terdaftar dan bisa melihat data-data yang ada di dalam sistem.',
         ]);
         
     }

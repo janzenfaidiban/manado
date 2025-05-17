@@ -4,7 +4,7 @@
     <!-- Logo Header -->
     <div class="logo-header" data-background-color="dark">
       <a href="{{ route('admin.dasbor') }}" class="logo">
-        <img src="{!! $siteLogo ?? '' !!}" alt="navbar brand" class="navbar-brand" height="20" />
+        <img src="{!! asset($siteLogo) ?? '' !!}" alt="navbar brand" class="navbar-brand" height="20" />
         <span class="text-light ps-2">{!! $siteTitle ?? 'site title' !!}</span>
       </a>
       <div class="nav-toggle">
@@ -59,7 +59,7 @@
         </li>
 
 
-      
+{{--       
 
         <!-- Ringkasan Statistik -->
         <li class="nav-item @if(Request::segment(2) == 'statistik') active @endif">
@@ -91,8 +91,7 @@
 
             </ul>
           </div>
-        </li>
-
+        </li> --}}
 
 
 
@@ -109,51 +108,40 @@
 
       
 
-        <!-- anggota -->
-        <li class="nav-item submenu @if(Request::segment(2) == 'anggota') active @endif" ">
-          <a data-bs-toggle="collapse" href="#anggota" class="collapsed" aria-expanded="false">
+        <!-- pendeta -->
+        <li class="nav-item submenu @if(Request::segment(2) == 'pendeta') active @endif" ">
+          <a data-bs-toggle="collapse" href="#pendeta" class="collapsed" aria-expanded="false">
             <i class="fas fa-users"></i>
-            <p>Anggota</p>
+            <p>Manajemen Data</p>
             <span class="caret"></span>
           </a>
-          <div class="collapse @if(Request::segment(2) == 'anggota') show @endif" id="anggota">
+          <div class="collapse @if(Request::segment(2) == 'pendeta') show @endif" id="pendeta">
             <ul class="nav nav-collapse">
               
-              <li @if(Request::segment(2) == 'anggota' && Request::segment(3) == '') class="active" @endif>
-                <a href="{{ auth()->user()->hasRole('admin') ? route('admin.anggota') : route('pimpinan.anggota') }}">
-                  <span class="sub-item">Semua Anggota</span>
+              <li @if(Request::segment(1) == 'jemaat') class="active" @endif>
+                <a href="{{ route('jemaat.index') }}">
+                  <span class="sub-item">Jemaat</span>
                 </a>
               </li>
 
-              <li @if(Request::segment(3) == 'baru') class="active" @endif>
-                <a href="{{ auth()->user()->hasRole('admin') ? route('admin.anggota.baru') : route('pimpinan.anggota.baru') }}">
-                  <span class="sub-item">Anggota Baru</span>
+              <li @if(Request::segment(1) == 'majelis') class="active" @endif>
+                <a href="{{ route('majelis.index') }}">
+                  <span class="sub-item">Majelis</span>
                 </a>
               </li>
 
-              <li @if(Request::segment(3) == 'pindahmasuk') class="active" @endif>
-                <a href="{{ auth()->user()->hasRole('admin') ? route('admin.anggota.pindahMasuk') : route('pimpinan.anggota.pindahMasuk') }}">
-                  <span class="sub-item">Pindah Masuk</span>
+              <li @if(Request::segment(1) == 'pendeta') class="active" @endif>
+                <a href="{{ route('pendeta.index') }}">
+                  <span class="sub-item">Pendeta</span>
                 </a>
               </li>
 
-              <li @if(Request::segment(3) == 'pindahkeluar') class="active" @endif>
-                <a href="{{ auth()->user()->hasRole('admin') ? route('admin.anggota.pindahKeluar') : route('pimpinan.anggota.pindahKeluar') }}">
-                  <span class="sub-item">Pindah Keluar</span>
+              <li @if(Request::segment(1) == 'admin-super') class="active" @endif>
+                <a href="{{ route('admin.index') }}">
+                  <span class="sub-item">Admin Super</span>
                 </a>
               </li>
 
-              <li @if(Request::segment(3) == 'draft') class="active" @endif>
-                <a href="{{ auth()->user()->hasRole('admin') ? route('admin.anggota.draft') : route('pimpinan.anggota.draft') }}">
-                  <span class="sub-item">Draft</span>
-                </a>
-              </li>
-
-              <li @if(Request::segment(3) == 'alumni') class="active" @endif>
-                <a href="{{ auth()->user()->hasRole('admin') ? route('admin.anggota.alumni') : route('pimpinan.anggota.alumni') }}">
-                  <span class="sub-item">Alumni</span>
-                </a>
-              </li>
 
             </ul>
           </div>
@@ -161,40 +149,6 @@
 
 
       
-
-        <!-- data master -->
-        <li class="nav-item @if(Request::segment(2) == 'kampus' || Request::segment(2) == 'fakultas' || Request::segment(2) == 'programstudi') active @endif">
-          <a data-bs-toggle="collapse" href="#data-master" class="collapsed" aria-expanded="false">
-            <i class="fas fa-box"></i>
-            <p>Data Master</p>
-            <span class="caret"></span>
-          </a>
-          <div class="collapse @if(Request::segment(2) == 'kampus' || Request::segment(2) == 'fakultas' || Request::segment(2) == 'programstudi') show @endif" id="data-master">
-            <ul class="nav nav-collapse">
-              
-              <li @if(Request::segment(2) == 'kampus') class="active" @endif>
-                <a href="{{ auth()->user()->hasRole('admin') ? route('admin.kampus.index') : route('pimpinan.kampus.index') }}">
-                  <span class="sub-item">Kampus</span>
-                </a>
-              </li>
-
-              <li @if(Request::segment(2) == 'fakultas') class="active" @endif>
-                <a href="{{ auth()->user()->hasRole('admin') ? route('admin.fakultas.index') : route('pimpinan.fakultas.index') }}">
-                  <span class="sub-item">Fakultas</span>
-                </a>
-              </li>
-
-              <li @if(Request::segment(2) == 'programstudi') class="active" @endif>
-                <a href="{{ auth()->user()->hasRole('admin') ? route('admin.programstudi.index') : route('pimpinan.programstudi.index') }}">
-                  <span class="sub-item">Program Studi</span>
-                </a>
-              </li>
-
-            </ul>
-          </div>
-        </li>
-
-
 
            
             

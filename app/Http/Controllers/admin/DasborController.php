@@ -9,10 +9,10 @@ use Illuminate\Support\Facades\Auth;
 
 // models
 use App\Models\User;
-use App\Models\Anggota;
-use App\Models\Kampus;
-use App\Models\Fakultas;
-use App\Models\ProgramStudi;
+use App\Models\Jemaat;
+use App\Models\Majelis;
+use App\Models\Pendeta;
+use App\Models\AdminSuper;
 
 class DasborController extends Controller
 {
@@ -21,17 +21,11 @@ class DasborController extends Controller
     public function index()
     {
 
-        // statistik anggota berdasarkan status
-        $anggotaTotal = Anggota::count();
-        $anggotaBaru = Anggota::where('status', 'Baru')->count();
-        $anggotaPindahMasuk = Anggota::where('status', 'Pindah Masuk')->count();
-        $anggotaPindahKeluar = Anggota::where('status', 'Pindah Keluar')->count();
-        $anggotaAlumni = Anggota::where('status', 'Alumni')->count();
-        $anggotaDraft = Anggota::where('status', 'Draft')->count();
+        $totalJemaat = Jemaat::count();
+        $totalMajelis = Majelis::count();
+        $totalPendeta = Pendeta::count();
+        $totalAdminSuper = AdminSuper::count();
 
-        $totalKampus = Kampus::count();
-        $totalFakultas = Fakultas::count();
-        $totalProgramStudi = ProgramStudi::count();
 
 
 
@@ -42,15 +36,11 @@ class DasborController extends Controller
         return view('admin.dasbor', compact(
             'pageTitle',
             'pageDescription',
-            'anggotaTotal',
-            'anggotaBaru',
-            'anggotaPindahMasuk',
-            'anggotaPindahKeluar',
-            'anggotaAlumni',
-            'anggotaDraft',
-            'totalKampus',
-            'totalFakultas',
-            'totalProgramStudi',
+
+            'totalJemaat',
+            'totalMajelis',
+            'totalPendeta',
+            'totalAdminSuper',
         ));
     }
 

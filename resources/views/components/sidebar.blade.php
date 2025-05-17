@@ -108,44 +108,50 @@
 
       
 
-        <!-- pendeta -->
-        <li class="nav-item submenu @if(Request::segment(2) == 'pendeta') active @endif" ">
-          <a data-bs-toggle="collapse" href="#pendeta" class="collapsed" aria-expanded="false">
-            <i class="fas fa-users"></i>
-            <p>Manajemen Data</p>
-            <span class="caret"></span>
-          </a>
-          <div class="collapse @if(Request::segment(2) == 'pendeta') show @endif" id="pendeta">
-            <ul class="nav nav-collapse">
-              
-              <li @if(Request::segment(1) == 'jemaat') class="active" @endif>
-                <a href="{{ route('jemaat.index') }}">
-                  <span class="sub-item">Jemaat</span>
-                </a>
-              </li>
+        <!-- manajemen-data -->
+        @php
+            $activeSegments = ['jemaat', 'majelis', 'pendeta', 'admin-super'];
+            $segment2 = Request::segment(2);
+        @endphp
 
-              <li @if(Request::segment(1) == 'majelis') class="active" @endif>
-                <a href="{{ route('majelis.index') }}">
-                  <span class="sub-item">Majelis</span>
-                </a>
-              </li>
+        <li class="nav-item submenu {{ in_array($segment2, $activeSegments) ? 'active' : '' }}">
+            <a data-bs-toggle="collapse" href="#manajemen-data" 
+              class="{{ in_array($segment2, $activeSegments) ? '' : 'collapsed' }}" 
+              aria-expanded="{{ in_array($segment2, $activeSegments) ? 'true' : 'false' }}">
+                <i class="fas fa-users"></i>
+                <p>Manajemen Data</p>
+                <span class="caret"></span>
+            </a>
 
-              <li @if(Request::segment(1) == 'pendeta') class="active" @endif>
-                <a href="{{ route('pendeta.index') }}">
-                  <span class="sub-item">Pendeta</span>
-                </a>
-              </li>
+            <div class="collapse {{ in_array($segment2, $activeSegments) ? 'show' : '' }}" id="manajemen-data">
+                <ul class="nav nav-collapse">
+                    <li class="{{ $segment2 == 'jemaat' ? 'active' : '' }}">
+                        <a href="{{ route('jemaat.index') }}">
+                            <span class="sub-item">Jemaat</span>
+                        </a>
+                    </li>
 
-              <li @if(Request::segment(1) == 'admin-super') class="active" @endif>
-                <a href="{{ route('admin.index') }}">
-                  <span class="sub-item">Admin Super</span>
-                </a>
-              </li>
+                    <li class="{{ $segment2 == 'majelis' ? 'active' : '' }}">
+                        <a href="{{ route('majelis.index') }}">
+                            <span class="sub-item">Majelis</span>
+                        </a>
+                    </li>
 
+                    <li class="{{ $segment2 == 'pendeta' ? 'active' : '' }}">
+                        <a href="{{ route('pendeta.index') }}">
+                            <span class="sub-item">Pendeta</span>
+                        </a>
+                    </li>
 
-            </ul>
-          </div>
+                    <li class="{{ $segment2 == 'admin-super' ? 'active' : '' }}">
+                        <a href="{{ route('admin.index') }}">
+                            <span class="sub-item">Admin Super</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </li>
+
 
 
       

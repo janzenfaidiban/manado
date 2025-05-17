@@ -14,7 +14,7 @@
                                             <form action="{{ $formAction }}" method="GET">
                                                 <div class="form-group">
                                                     <div class="input-icon">
-                                                        <input type="text" class="form-control" name="search" placeholder="Cari nama anggota..." value="{{ request()->search ?? old('search') }}">
+                                                        <input type="text" class="form-control" name="search" placeholder="Cari nama lengap" value="{{ request()->search ?? old('search') }}">
                                                         <span class="input-icon-addon">
                                                             <i class="fa fa-search"></i>
                                                         </span>

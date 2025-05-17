@@ -15,9 +15,9 @@ class AdminSuperSeeder extends Seeder
         $data = [
             [
                 'user_id' => 1,
-                'nama_lengkap' => 'Andi Saputra',
+                'nama_lengkap' => 'Admin Super 1',
                 'no_hp' => '081234567890',
-                'email' => 'andi@example.com',
+                'email' => 'adminsuper1@example.com',
                 'keterangan' => 'Admin utama sistem informasi.'
             ],
             [
@@ -29,9 +29,9 @@ class AdminSuperSeeder extends Seeder
             ],
             [
                 'user_id' => 3,
-                'nama_lengkap' => 'Citra Dewi',
+                'nama_lengkap' => 'Admin Super 2',
                 'no_hp' => '083144556677',
-                'email' => 'citra@example.com',
+                'email' => 'adminsuper2@example.com',
                 'keterangan' => 'Menangani bagian keamanan akun.'
             ],
             [

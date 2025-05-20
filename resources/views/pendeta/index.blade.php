@@ -31,6 +31,7 @@
                                     <thead>
                                     <tr>
                                         <th>#</th>
+                                        <th>Foto Profil</th>
                                         <th>Nama Lengkap</th>
                                         <th>Jenis Kelamin</th>
                                         <th>Tanggal Lahir</th>
@@ -44,6 +45,9 @@
                                     @forelse($pendetas as $key => $pendeta)
                                         <tr>
                                             <th scope="row">{{ $i + $key + 1 }}</th>
+                                            <td>
+                                                <img src="{{ $pendeta->foto_profil ? asset($pendeta->foto_profil) : 'assets/img/avatar-placeholder.png' }}" alt="Foto Profil" class="avatar-img rounded-circle" width="50">
+                                            </td>
                                             <td>{{ $pendeta->nama_lengkap }}</td>
                                             <td>{{ $pendeta->jenis_kelamin == 'L' ? 'Laki-laki' : 'Perempuan' }}</td>
                                             <td>{{ \Carbon\Carbon::parse($pendeta->tanggal_lahir)->format('d-m-Y') }}</td>

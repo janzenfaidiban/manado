@@ -17,6 +17,7 @@
 
                             <x-alert />
 
+
                             <form 
                                 action="{{ isset($data) ? route('admin.update', $data->id) : route('admin.store') }}" 
                                 method="POST"
@@ -119,6 +120,27 @@
                                     >
                                 </div>
 
+                                
+
+                            <!-- Upload Avatar -->
+                            <div class="mb-3">
+
+                                <label for="avatar" class="form-label">Avatar</label>
+                                <!-- Preview Avatar -->
+                                <div class="mb-2">
+                                    <img id="preview-image" src="{{ isset($data) && $data->user->avatar ? asset('storage/' . $data->user->avatar) : asset('assets/img/avatar-placeholder.png') }}" alt="Preview avatar" width="150" class="img-thumbnail">
+                                </div>
+
+                                <input type="file" class="form-control" id="avatar" name="avatar" accept="image/*" onchange="previewImage(event)">
+
+                                <!-- Spinner Loading -->
+                                <div id="loading-spinner" class="mt-2" style="display: none;">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </div>
+                            </div>
+
                                 <!-- Keterangan -->
                                 <div class="form-group mb-3">
                                     <label for="keterangan">Keterangan</label>
@@ -140,9 +162,11 @@
                                     <button type="submit" class="btn btn-primary">
                                         <i class="fa fa-save"></i> Simpan
                                     </button>
+                                    @if(isset($data))
                                     <a href="{{ route('admin.show', $data->id) }}" class="btn">
                                         <i class="fa fa-eye"></i> Detail
                                     </a>
+                                    @endif
                                     <a href="{{ route('admin.index') }}" class="btn">
                                         <i class="fa fa-arrow-left"></i> Kembali
                                     </a>
@@ -160,3 +184,49 @@
 </div>
 
 @stop
+
+
+
+
+@push('scripts')
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        function previewImage(event) {
+            var input = event.target;
+            var reader = new FileReader();
+            var spinner = document.getElementById('loading-spinner');
+            var imgElement = document.getElementById('preview-image');
+
+            // Tampilkan spinner & sembunyikan gambar sementara
+            spinner.style.display = 'block';
+            imgElement.style.display = 'none';
+
+            reader.onload = function(){
+                setTimeout(function() { // Tunggu 1 detik sebelum menampilkan gambar
+                    spinner.style.display = 'none';
+                    imgElement.src = reader.result;
+                    imgElement.style.display = 'block';
+                }, 500);
+            };
+
+            reader.readAsDataURL(input.files[0]); // Baca file sebagai URL
+        }
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('#dataTable tbody tr').each(function (index) {
+                $(this).find('td:first').text(index + 1);
+            });
+        });
+    </script>
+
+    <!-- Page level plugins -->
+    <script src="{{ asset('template/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('template/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{{ asset('template/js/demo/datatables-demo.js') }}"></script>
+@endpush

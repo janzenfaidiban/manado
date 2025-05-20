@@ -112,4 +112,24 @@ class JemaatController extends Controller
 
         return redirect()->route('jemaat.index')->with('success', 'Data Jemaat berhasil diperbarui.');
     }
+
+
+    // forceDelete (delete permanently)
+    public function forceDelete($id)
+    {
+
+        // dd('delete admin');
+        try {
+            $data = Jemaat::findOrFail($id);
+
+            $data->forceDelete();
+
+            return redirect()->back()->with('success', 'Jemaat berhasil dihapus permanen.');
+        
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Gagal menghapus Jemaat: ' . $e->getMessage());
+        }
+    }
+
+
 }

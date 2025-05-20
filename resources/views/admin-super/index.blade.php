@@ -31,6 +31,7 @@
                                     <thead>
                                     <tr>
                                         <th>#</th>
+                                        <th>Avatar</th>
                                         <th>Nama Lengkap</th>
                                         <th>No HP</th>
                                         <th>Email</th>
@@ -43,6 +44,9 @@
                                     @forelse($adminSupers as $key => $adminSuper)
                                         <tr>
                                             <th scope="row">{{ $i + $key + 1 }}</th>
+                                            <td>
+                                                <img src="{{ $adminSuper->user->avatar ? asset($adminSuper->user->avatar) : 'assets/img/avatar-placeholder.png' }}" alt="Avatar" class="avatar-img rounded-circle" width="50">
+                                            </td>
                                             <td>{{ $adminSuper->nama_lengkap }}</td>
                                             <td>{{ $adminSuper->no_hp }}</td>
                                             <td>{{ $adminSuper->email }}</td>

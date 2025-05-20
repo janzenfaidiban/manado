@@ -41,6 +41,7 @@ class AdminSuperController extends Controller
     // Show form to add new AdminSuper
     public function create()
     {
+        
         $pageTitle = 'Tambah Admin Super Baru';
         $pageDescription = 'Formulir tambah data admin super baru.';
 
@@ -69,6 +70,27 @@ class AdminSuperController extends Controller
 
         // Assign role 'admin' ke user baru
         $user->assignRole('admin');
+
+        
+
+
+        // Cek apakah ada file avatar baru yang diunggah
+        if ($request->hasFile('avatar')) {
+            // Hapus avatar lama jika ada
+            if ($user->avatar) {
+                Storage::disk('public')->delete($user->avatar);
+            }
+
+            // Tentukan folder berdasarkan ID barang
+            $folderPath = 'avatar/' . $user->id;
+
+            // Simpan avatar baru ke dalam folder
+            $avatarPath = $request->file('avatar')->store($folderPath, 'public');
+
+            // Simpan path avatar ke database
+            $updateData['avatar'] = $avatarPath;
+        }
+        
 
         // Buat AdminSuper dengan relasi ke user tersebut
         AdminSuper::create([
@@ -136,7 +158,12 @@ class AdminSuperController extends Controller
         ]);
 
         // Update user
+        $user->name = $request->nama_lengkap;
         $user->username = $request->username;
+        $user->email = $request->email;
+
+        $user->avatar = 'assets/img/avatar-placeholder.png'; // Set avatar ke default
+
         if ($request->filled('password')) {
             $user->password = Hash::make($request->password);
         }

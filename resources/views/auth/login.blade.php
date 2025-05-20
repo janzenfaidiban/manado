@@ -58,7 +58,7 @@
                         <div class="text-center w-75 m-auto">
                             <div class="auth-logo">
 
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLJFp3zGplyzKvJNcdByTY3KRnM9jql5ptRA&s" alt="logo" class="w-50">
+                                <img src="{{ asset($siteLogo) }}" alt="logo" class="w-50">
                                 <h1 class="h4 text-uppercase">{!! $siteTitle !!}</h1>
                                 <p class="text-uppercase">{!! $siteDescription !!}</p>
                             </div>

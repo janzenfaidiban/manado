@@ -168,7 +168,7 @@
                                     </a>
                                     @endif
                                     <a href="{{ route('admin.index') }}" class="btn">
-                                        <i class="fa fa-arrow-left"></i> Kembali
+                                        <i class="fa fa-times-circle"></i> Tutup
                                     </a>
                                 </div>
 

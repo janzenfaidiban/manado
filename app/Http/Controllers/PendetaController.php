@@ -80,12 +80,12 @@ class PendetaController extends Controller
     // Show form to edit existing Pendeta
     public function edit($id)
     {
-        $pendeta = Pendeta::findOrFail($id);
+        $data = Pendeta::findOrFail($id);
 
         $pageTitle = 'Edit Data Pendeta';
         $pageDescription = 'Formulir edit data pendeta.';
 
-        return view('pendeta.form', compact('pageTitle', 'pageDescription', 'pendeta'));
+        return view('pendeta.form', compact('pageTitle', 'pageDescription', 'data'));
     }
 
     // Update existing Pendeta data
@@ -128,8 +128,7 @@ class PendetaController extends Controller
 
         $pendeta->update($data);
 
-        return redirect()->route('pendeta.show', $pendeta->id)
-                         ->with('success', 'Data Pendeta berhasil diperbarui.');
+        return redirect()->back()->with('success', 'Data Pendeta berhasil diperbarui.');
     }
 
 

@@ -69,7 +69,7 @@
                                         class="form-control @error('tanggal_lahir') is-invalid @enderror" 
                                         id="tanggal_lahir" 
                                         name="tanggal_lahir" 
-                                        value="{{ old('tanggal_lahir', isset($data) ? $data->tanggal_lahir->format('Y-m-d') : '') }}" 
+                                        value="{{ old('tanggal_lahir', isset($data) && $data->tanggal_lahir ? \Carbon\Carbon::parse($data->tanggal_lahir)->format('Y-m-d') : '') }}" 
                                         required
                                     >
                                     @error('tanggal_lahir')
@@ -152,13 +152,50 @@
                                         required
                                     >
                                         <option value="">Pilih Lingkungan</option>
-                                        @foreach(['1', '2', '3', '4'] as $lingkungan)
+                                        @foreach(['Lingkungan 1', 'Lingkungan 2', 'Lingkungan 3', 'Lingkungan 4'] as $lingkungan)
                                             <option value="{{ $lingkungan }}" {{ old('lingkungan', $data->lingkungan ?? '') == $lingkungan ? 'selected' : '' }}>
                                                 {{ $lingkungan }}
                                             </option>
                                         @endforeach
                                     </select>
                                     @error('lingkungan')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <!-- Status Baptis -->
+                                <div class="form-group mb-3">
+                                    <label for="status_baptis">Status Baptis</label>
+                                    <select 
+                                        class="form-select @error('status_baptis') is-invalid @enderror" 
+                                        id="status_baptis" 
+                                        name="status_baptis" 
+                                        required
+                                    >
+                                        <option value="">Pilih Status Baptis</option>
+                                        @foreach(['Sudah', 'Belum'] as $status_baptis)
+                                            <option value="{{ $status_baptis }}" {{ old('status_baptis', $data->status_baptis ?? '') == $status_baptis ? 'selected' : '' }}>
+                                                {{ $status_baptis }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('status_baptis')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <!-- Keterangan -->
+                                <div class="form-group mb-3">
+                                    <label for="keterangan">Keterangan</label>
+                                    <textarea 
+                                        class="form-control @error('keterangan') is-invalid @enderror" 
+                                        id="keterangan" 
+                                        name="keterangan" 
+                                        placeholder="Masukkan keterangan"
+                                        required
+                                    >{{ old('keterangan', $data->keterangan ?? '') }}</textarea>
+                                    <small class="form-text text-muted">Masukkan keterangan tambahan di sini.</small>
+                                    @error('keterangan')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -170,7 +207,7 @@
                                         <i class="fa fa-save"></i> Simpan
                                     </button>
                                     <a href="{{ route('jemaat.index') }}" class="btn btn-secondary">
-                                        <i class="fa fa-arrow-left"></i> Kembali
+                                        <i class="fa fa-times-circle"></i> Tutup
                                     </a>
                                 </div>
 

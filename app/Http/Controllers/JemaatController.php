@@ -50,6 +50,8 @@ class JemaatController extends Controller
             'pendidikan_terakhir' => 'required|in:SD,SMP,SMA/SMK,S1,S2,S3,Lainnya',
             'pekerjaan'           => 'required|in:Pelajar,Mahasiswa,PNS,TNI,POLRI,Guru,Petani,Wiraswasta,Lainnya',
             'lingkungan'          => 'required|in:1,2,3,4',
+            'status_baptis'            => 'nullable',
+            'keterangan'            => 'nullable',
         ]);
 
         $data = $request->only([
@@ -60,6 +62,8 @@ class JemaatController extends Controller
             'pendidikan_terakhir',
             'pekerjaan',
             'lingkungan',
+            'status_baptis',
+            'keterangan',
         ]);
 
         // Tambahkan user_id jika ada autentikasi
@@ -75,12 +79,12 @@ class JemaatController extends Controller
     // Show form to edit existing Jemaat
     public function edit($id)
     {
-        $jemaat = Jemaat::findOrFail($id);
+        $data = Jemaat::findOrFail($id);
 
         $pageTitle = 'Edit Data Jemaat';
         $pageDescription = 'Formulir edit data jemaat.';
 
-        return view('jemaat.form', compact('pageTitle', 'pageDescription', 'jemaat'));
+        return view('jemaat.form', compact('pageTitle', 'pageDescription', 'data'));
     }
 
     // Update existing Jemaat data
@@ -96,6 +100,8 @@ class JemaatController extends Controller
             'pendidikan_terakhir' => 'required|in:SD,SMP,SMA/SMK,S1,S2,S3,Lainnya',
             'pekerjaan'           => 'required|in:Pelajar,Mahasiswa,PNS,TNI,POLRI,Guru,Petani,Wiraswasta,Lainnya',
             'lingkungan'          => 'required|in:1,2,3,4',
+            'status_baptis'            => 'nullable',
+            'keterangan'            => 'nullable',
         ]);
 
         $data = $request->only([
@@ -106,11 +112,13 @@ class JemaatController extends Controller
             'pendidikan_terakhir',
             'pekerjaan',
             'lingkungan',
+            'status_baptis',
+            'keterangan',
         ]);
 
         $jemaat->update($data);
 
-        return redirect()->route('jemaat.index')->with('success', 'Data Jemaat berhasil diperbarui.');
+        return redirect()->back()->with('success', 'Data Jemaat berhasil diperbarui.');
     }
 
 
@@ -118,7 +126,6 @@ class JemaatController extends Controller
     public function forceDelete($id)
     {
 
-        // dd('delete admin');
         try {
             $data = Jemaat::findOrFail($id);
 

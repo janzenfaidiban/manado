@@ -6,16 +6,8 @@ use Illuminate\Support\Facades\Auth;
 // siteInfo 
 use App\Http\Controllers\SiteInfoController as SiteInfoController;
 
-// admin
-use App\Http\Controllers\admin\DasborController as AdminDasborController;
-
-// operator
-use App\Http\Controllers\admin\DasborController as OperatorDasborController;
-
-// pimpinan
-use App\Http\Controllers\pimpinan\DasborController as PimpinanDasborController;
-
-// theme setups
+use App\Http\Controllers\DasborController;
+use App\Http\Controllers\StatistikController;
 use App\Http\Controllers\ThemeController;
 
 Route::post('/update-theme', [ThemeController::class, 'updateTheme'])->name('update.theme');
@@ -42,7 +34,10 @@ Route::group(['middleware' => ['auth']], function () {
     // routes untuk admin super
     Route::group(['middleware' => ['role:admin'], 'prefix' => 'admin'], function () {
 
-        Route::get('/dasbor', [adminDasborController::class, 'index'])->name('admin.dasbor');
+        Route::get('/dasbor', [DasborController::class, 'index'])->name('admin.dasbor');
+        
+        Route::get('/statistik-jemaat', [StatistikController::class, 'statistikJemaat'])->name('admin.statistikJemaat');
+        Route::get('/statistik-majelis', [StatistikController::class, 'statistikMajelis'])->name('admin.statistikMajelis');
 
         require 'pendeta.php';
         require 'majelis.php';

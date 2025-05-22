@@ -56,15 +56,15 @@
                                             <td>{{ $pendeta->keterangan ?? '-' }}</td>
                                             <td>
                                                 <div class="d-flex align-items-center gap-2">
-                                                    <a href="{{ route('pendeta.show', $pendeta->id) }}" class="btn btn-sm btn-primary" title="Detail">
+                                                    {{-- <a href="{{ route('pendeta.show', $pendeta->id) }}" class="btn btn-sm btn-primary" title="Detail">
                                                         <i class="fa fa-eye"></i> Detail
-                                                    </a>
+                                                    </a> --}}
 
-                                                    <a href="{{ route('pendeta.edit', $pendeta->id) }}" class="btn btn-sm btn-warning" title="Ubah">
+                                                    <a href="{{ route('pendeta.edit', $pendeta->id) }}" class="btn text-primary" title="Ubah">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
 
-                                                    <a href="#" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#forceDeleteModal{{ $pendeta->id }}" title="Hapus Permanen">
+                                                    <a href="#" class="btn text-muted" data-bs-toggle="modal" data-bs-target="#forceDeleteModal{{ $pendeta->id }}" title="Hapus Permanen">
                                                         <i class="fa fa-trash"></i>
                                                     </a>
                                                 </div>

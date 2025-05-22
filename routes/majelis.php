@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PendetaController;
+use App\Http\Controllers\MajelisController;
 
 Route::prefix('majelis')->group(function () {
 
-    Route::controller(PendetaController::class)->group(function () {
+    Route::controller(MajelisController::class)->group(function () {
 
         // menampilkan semua data majelis
         Route::get('/', 'index')->name('majelis.index');

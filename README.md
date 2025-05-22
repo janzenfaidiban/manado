@@ -13,6 +13,14 @@ download perubahan baru
 
     git pull
 
+perintah untuk jalankan server
+
+    php artisan serve
+
+perintah untuk migrasi database sekaligus jalankan seeder (membuat database dan mengisi data ke dalam database)
+
+    php artisan migrate:fresh --seed
+
 menambahkan perubahan baru ke git local
 
     git add .

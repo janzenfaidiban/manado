@@ -23,7 +23,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <p class="fs-1">Selamat datang!</p>
-                                    <p class="fs-4 text-muted">Sistem Informasi Perhimpunan Mahasiswa Katolik Indonesia Cabang Jayapura. Aplikasi ini hadir untuk memudahkan pengelolaan data anggota dan kegiatan organisasi secara efisien dan terintegrasi.</p>
+                                    <p class="fs-4 text-muted">Sistem Informasi Pendataan Jemaat Gereja Kemah Inil Indonesia GKII Moria Manado. Manajemen data Jemaat, Majelis dan Pendeta.</p>
                                 </div>
                             </div>
                         </div>

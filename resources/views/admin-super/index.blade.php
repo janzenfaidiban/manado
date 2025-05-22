@@ -31,7 +31,7 @@
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Avatar</th>
+                                        <th>Foto Profil</th>
                                         <th>Nama Lengkap</th>
                                         <th>No HP</th>
                                         <th>Email</th>
@@ -45,7 +45,7 @@
                                         <tr>
                                             <th scope="row">{{ $i + $key + 1 }}</th>
                                             <td>
-                                                <img src="{{ $adminSuper->user->avatar ? asset($adminSuper->user->avatar) : 'assets/img/avatar-placeholder.png' }}" alt="Avatar" class="avatar-img rounded-circle" width="50">
+                                                <img src="{{ $adminSuper->user->avatar ? asset($adminSuper->user->avatar) : 'assets/img/avatar-placeholder.png' }}" alt="Avatar" class=" rounded-circle" width="70px">
                                             </td>
                                             <td>{{ $adminSuper->nama_lengkap }}</td>
                                             <td>{{ $adminSuper->no_hp }}</td>
@@ -54,15 +54,15 @@
                                             <td>{{ $adminSuper->keterangan ?? '-' }}</td>
                                             <td>
                                                 <div class="d-flex align-items-center gap-2">
-                                                    <a href="{{ route('admin.show', $adminSuper->id) }}" class="btn btn-sm btn-primary" title="Detail">
+                                                    {{-- <a href="{{ route('admin.show', $adminSuper->id) }}" class="btn btn-sm btn-primary" title="Detail">
                                                         <i class="fa fa-eye"></i> Detail
-                                                    </a>
+                                                    </a> --}}
 
-                                                    <a href="{{ route('admin.edit', $adminSuper->id) }}" class="btn btn-sm btn-warning" title="Ubah">
+                                                    <a href="{{ route('admin.edit', $adminSuper->id) }}" class="btn text-primary" title="Ubah">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
 
-                                                    <a href="#" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#forceDeleteModal{{ $adminSuper->id }}" title="Hapus Permanen">
+                                                    <a href="#" class="btn text-muted" data-bs-toggle="modal" data-bs-target="#forceDeleteModal{{ $adminSuper->id }}" title="Hapus Permanen">
                                                         <i class="fa fa-trash"></i>
                                                     </a>
                                                 </div>

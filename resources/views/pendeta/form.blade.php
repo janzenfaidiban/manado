@@ -70,7 +70,7 @@
                                         class="form-control @error('tanggal_lahir') is-invalid @enderror" 
                                         id="tanggal_lahir" 
                                         name="tanggal_lahir" 
-                                        value="{{ old('tanggal_lahir', isset($data) ? $data->tanggal_lahir->format('Y-m-d') : '') }}" 
+                                        value="{{ old('tanggal_lahir', isset($data) && $data->tanggal_lahir ? \Carbon\Carbon::parse($data->tanggal_lahir)->format('Y-m-d') : '') }}" 
                                         required
                                     >
                                     @error('tanggal_lahir')
@@ -162,7 +162,7 @@
                                         <i class="fa fa-save"></i> Simpan
                                     </button>
                                     <a href="{{ route('pendeta.index') }}" class="btn btn-secondary">
-                                        <i class="fa fa-arrow-left"></i> Kembali
+                                        <i class="fa fa-times-circle"></i> Tutup
                                     </a>
                                 </div>
 

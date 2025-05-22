@@ -36,6 +36,9 @@
                                         <th>Tanggal Lahir</th>
                                         <th>Tempat Lahir</th>
                                         <th>Pendidikan Terakhir</th>
+                                        <th>Pekerjaan</th>
+                                        <th>Status Baptis</th>
+                                        <th>Lingkungan</th>
                                         <th>Keterangan</th>
                                         <th>Opsi</th>
                                     </tr>
@@ -49,18 +52,21 @@
                                             <td>{{ \Carbon\Carbon::parse($jemaat->tanggal_lahir)->format('d-m-Y') }}</td>
                                             <td>{{ $jemaat->tempat_lahir }}</td>
                                             <td>{{ $jemaat->pendidikan_terakhir }}</td>
+                                            <td>{{ $jemaat->pekerjaan }}</td>
+                                            <td>{{ $jemaat->status_baptis }}</td>
+                                            <td>{{ $jemaat->lingkungan }}</td>
                                             <td>{{ $jemaat->keterangan ?? '-' }}</td>
                                             <td>
                                                 <div class="d-flex align-items-center gap-2">
-                                                    <a href="{{ route('jemaat.show', $jemaat->id) }}" class="btn btn-sm btn-primary" title="Detail">
+                                                    {{-- <a href="{{ route('jemaat.show', $jemaat->id) }}" class="btn btn-sm btn-primary" title="Detail">
                                                         <i class="fa fa-eye"></i> Detail
-                                                    </a>
+                                                    </a> --}}
 
-                                                    <a href="{{ route('jemaat.edit', $jemaat->id) }}" class="btn btn-sm btn-warning" title="Ubah">
+                                                    <a href="{{ route('jemaat.edit', $jemaat->id) }}" class="btn text-primary" title="Ubah">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
 
-                                                    <a href="#" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#forceDeleteModal{{ $jemaat->id }}" title="Hapus Permanen">
+                                                    <a href="#" class="btn text-muted" data-bs-toggle="modal" data-bs-target="#forceDeleteModal{{ $jemaat->id }}" title="Hapus Permanen">
                                                         <i class="fa fa-trash"></i>
                                                     </a>
                                                 </div>

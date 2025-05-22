@@ -21,6 +21,7 @@ class JemaatSeeder extends Seeder
                 'tempat_lahir' => 'Jayapura',
                 'pendidikan_terakhir' => 'SMA/SMK',
                 'pekerjaan' => 'Guru',
+                'status_baptis' => 'Sudah',
                 'lingkungan' => '1',
             ],
             [
@@ -31,6 +32,7 @@ class JemaatSeeder extends Seeder
                 'tempat_lahir' => 'Manokwari',
                 'pendidikan_terakhir' => 'S1',
                 'pekerjaan' => 'PNS',
+                'status_baptis' => 'Sudah',
                 'lingkungan' => '2',
             ],
             [
@@ -41,6 +43,7 @@ class JemaatSeeder extends Seeder
                 'tempat_lahir' => 'Sorong',
                 'pendidikan_terakhir' => 'SMP',
                 'pekerjaan' => 'Pelajar',
+                'status_baptis' => 'Sudah',
                 'lingkungan' => '3',
             ],
             [
@@ -51,6 +54,7 @@ class JemaatSeeder extends Seeder
                 'tempat_lahir' => 'Biak',
                 'pendidikan_terakhir' => 'S2',
                 'pekerjaan' => 'Wiraswasta',
+                'status_baptis' => 'Sudah',
                 'lingkungan' => '1',
             ],
             [
@@ -61,6 +65,7 @@ class JemaatSeeder extends Seeder
                 'tempat_lahir' => 'Merauke',
                 'pendidikan_terakhir' => 'S1',
                 'pekerjaan' => 'Petani',
+                'status_baptis' => 'Sudah',
                 'lingkungan' => '4',
             ],
             [
@@ -71,6 +76,7 @@ class JemaatSeeder extends Seeder
                 'tempat_lahir' => 'Fakfak',
                 'pendidikan_terakhir' => 'SMA/SMK',
                 'pekerjaan' => 'Mahasiswa',
+                'status_baptis' => 'Sudah',
                 'lingkungan' => '2',
             ],
             [
@@ -81,6 +87,7 @@ class JemaatSeeder extends Seeder
                 'tempat_lahir' => 'Wamena',
                 'pendidikan_terakhir' => 'S1',
                 'pekerjaan' => 'PNS',
+                'status_baptis' => 'Sudah',
                 'lingkungan' => '3',
             ],
             [
@@ -91,6 +98,7 @@ class JemaatSeeder extends Seeder
                 'tempat_lahir' => 'Serui',
                 'pendidikan_terakhir' => 'SMA/SMK',
                 'pekerjaan' => 'Lainnya',
+                'status_baptis' => 'Sudah',
                 'lingkungan' => '4',
             ],
             [
@@ -101,6 +109,7 @@ class JemaatSeeder extends Seeder
                 'tempat_lahir' => 'Nabire',
                 'pendidikan_terakhir' => 'S1',
                 'pekerjaan' => 'TNI',
+                'status_baptis' => 'Sudah',
                 'lingkungan' => '1',
             ],
             [
@@ -111,6 +120,7 @@ class JemaatSeeder extends Seeder
                 'tempat_lahir' => 'Ambon',
                 'pendidikan_terakhir' => 'S2',
                 'pekerjaan' => 'POLRI',
+                'status_baptis' => 'Sudah',
                 'lingkungan' => '2',
             ],
             [
@@ -121,6 +131,7 @@ class JemaatSeeder extends Seeder
                 'tempat_lahir' => 'Dekai',
                 'pendidikan_terakhir' => 'SMP',
                 'pekerjaan' => 'Pelajar',
+                'status_baptis' => 'Sudah',
                 'lingkungan' => '3',
             ],
             [
@@ -131,6 +142,7 @@ class JemaatSeeder extends Seeder
                 'tempat_lahir' => 'Enarotali',
                 'pendidikan_terakhir' => 'S1',
                 'pekerjaan' => 'Guru',
+                'status_baptis' => 'Sudah',
                 'lingkungan' => '4',
             ],
             [
@@ -141,6 +153,7 @@ class JemaatSeeder extends Seeder
                 'tempat_lahir' => 'Sentani',
                 'pendidikan_terakhir' => 'S3',
                 'pekerjaan' => 'Wiraswasta',
+                'status_baptis' => 'Sudah',
                 'lingkungan' => '1',
             ],
             [
@@ -151,6 +164,7 @@ class JemaatSeeder extends Seeder
                 'tempat_lahir' => 'Oksibil',
                 'pendidikan_terakhir' => 'SMA/SMK',
                 'pekerjaan' => 'Petani',
+                'status_baptis' => 'Sudah',
                 'lingkungan' => '2',
             ],
             [
@@ -161,7 +175,41 @@ class JemaatSeeder extends Seeder
                 'tempat_lahir' => 'Kurima',
                 'pendidikan_terakhir' => 'S1',
                 'pekerjaan' => 'Mahasiswa',
+                'status_baptis' => 'Sudah',
                 'lingkungan' => '3',
+            ],
+            [
+                'user_id' => 31,
+                'nama_lengkap' => 'Yohanes Karel',
+                'jenis_kelamin' => 'L',
+                'tanggal_lahir' => '2025-04-17',
+                'tempat_lahir' => 'Jayapura',
+                'pendidikan_terakhir' => 'Belum Sekolah',
+                'pekerjaan' => 'Belum Bekerja',
+                'status_baptis' => 'Belum',
+                'lingkungan' => '3',
+            ],
+            [
+                'user_id' => 32,
+                'nama_lengkap' => 'Yuliana Jane',
+                'jenis_kelamin' => 'L',
+                'tanggal_lahir' => '2025-04-01',
+                'tempat_lahir' => 'Ambon',
+                'pendidikan_terakhir' => 'Belum Sekolah',
+                'pekerjaan' => 'Belum Bekerja',
+                'status_baptis' => 'Belum',
+                'lingkungan' => '2',
+            ],
+            [
+                'user_id' => 33,
+                'nama_lengkap' => 'Yuliana Josephine',
+                'jenis_kelamin' => 'L',
+                'tanggal_lahir' => '2025-04-30',
+                'tempat_lahir' => 'Manado',
+                'pendidikan_terakhir' => 'Belum Sekolah',
+                'pekerjaan' => 'Belum Bekerja',
+                'status_baptis' => 'Belum',
+                'lingkungan' => '1',
             ],
         ];
 

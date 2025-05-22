@@ -18,7 +18,7 @@ class MajelisController extends Controller
             $query->where('nama_lengkap', 'LIKE', '%' . $search . '%');
         }
 
-        $majels = $query->orderBy('nama_lengkap', 'asc')->paginate(10);
+        $majelis = $query->orderBy('nama_lengkap', 'asc')->paginate(10);
 
         $pageTitle = 'Data Majelis';
         $pageDescription = 'Menampilkan semua data Majelis.';
@@ -26,7 +26,7 @@ class MajelisController extends Controller
         return view('majelis.index', compact(
             'pageTitle',
             'pageDescription',
-            'majels',
+            'majelis',
         ))->with('i', ($request->input('page', 1) - 1) * 10);
     }
 
@@ -90,12 +90,12 @@ class MajelisController extends Controller
     // Show form to edit existing Majelis
     public function edit($id)
     {
-        $majelis = Majelis::findOrFail($id);
+        $data = Majelis::findOrFail($id);
 
         $pageTitle = 'Edit Data Majelis';
         $pageDescription = 'Formulir edit data majelis.';
 
-        return view('majelis.form', compact('pageTitle', 'pageDescription', 'majelis'));
+        return view('majelis.form', compact('pageTitle', 'pageDescription', 'data'));
     }
 
     // Update existing Majelis data
@@ -145,7 +145,7 @@ class MajelisController extends Controller
 
         $majelis->update($data);
 
-        return redirect()->route('majelis.index')->with('success', 'Data Majelis berhasil diperbarui.');
+        return redirect()->back()->with('success', 'Data Majelis berhasil diperbarui.');
     }
 
 

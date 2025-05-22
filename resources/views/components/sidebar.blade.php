@@ -59,7 +59,7 @@
         </li>
 
 
-{{--       
+      
 
         <!-- Ringkasan Statistik -->
         <li class="nav-item @if(Request::segment(2) == 'statistik') active @endif">
@@ -68,30 +68,30 @@
             <p>Ringkasan Statistik</p>
             <span class="caret"></span>
           </a>
-          <div class="collapse @if(Request::segment(2) == 'statistik') show @endif" id="ringkasan-statistik">
+          <div class="collapse @if(Request::segment(2) == 'statistik-jemaat' || Request::segment(2) == 'statistik-majelis') show @endif" id="ringkasan-statistik">
             <ul class="nav nav-collapse">
               
-              <li @if(Request::segment(2) == 'statistik' && Request::segment(3) == 'anggota') class="active" @endif">
-                <a href="{{ auth()->user()->hasRole('admin') ? route('admin.statistik.anggota') : route('pimpinan.statistik.anggota') }}">
-                  <span class="sub-item">Statistik Anggota Berdasarkan Status</span>
+              <li @if(Request::segment(2) == 'statistik-jemaat') class="active" @endif">
+                <a href="{{ auth()->user()->hasRole('admin') ? route('admin.statistikJemaat') : route('pimpinan.statistikJemaat') }}">
+                  <span class="sub-item">Statistik Jemaat</span>
                 </a>
               </li>
               
-              <li @if(Request::segment(2) == 'statistik' && Request::segment(3) == 'alumni') class="active" @endif">
-                <a href="{{ auth()->user()->hasRole('admin') ? route('admin.statistik.alumni') : route('pimpinan.statistik.alumni') }}">
-                  <span class="sub-item">Statistik Alumni</span>
+              <li @if(Request::segment(2) == 'statistik-majelis') class="active" @endif">
+                <a href="{{ auth()->user()->hasRole('admin') ? route('admin.statistikMajelis') : route('pimpinan.statistikMajelis') }}">
+                  <span class="sub-item">Statistik Majelis</span>
                 </a>
               </li>
               
-              <li @if(Request::segment(2) == 'statistik' && Request::segment(3) == 'program-studi') class="active" @endif">
-                <a href="{{ auth()->user()->hasRole('admin') ? route('admin.statistik.programstudi') : route('pimpinan.statistik.programstudi') }}">
-                  <span class="sub-item">Statistik Program Studi, Fakultas & Universitas</span>
+              {{-- <li @if(Request::segment(2) == 'statistik-majelis') class="active" @endif">
+                <a href="{{ auth()->user()->hasRole('admin') ? route('admin.statistikPendeta') : route('pimpinan.statistikPendeta') }}">
+                  <span class="sub-item">Statistik Pendeta</span>
                 </a>
-              </li>
+              </li> --}}
 
             </ul>
           </div>
-        </li> --}}
+        </li>
 
 
 

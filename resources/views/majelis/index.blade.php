@@ -64,15 +64,15 @@
                                             <td>{{ $m->keterangan ?? '-' }}</td>
                                             <td>
                                                 <div class="d-flex align-items-center gap-2">
-                                                    <a href="{{ route('majelis.show', $m->id) }}" class="btn btn-sm btn-primary" title="Detail">
+                                                    {{-- <a href="{{ route('majelis.show', $m->id) }}" class="btn btn-sm btn-primary" title="Detail">
                                                         <i class="fa fa-eye"></i> Detail
-                                                    </a>
+                                                    </a> --}}
 
-                                                    <a href="{{ route('majelis.edit', $m->id) }}" class="btn btn-sm btn-warning" title="Ubah">
+                                                    <a href="{{ route('majelis.edit', $m->id) }}" class="btn text-primary" title="Ubah">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
 
-                                                    <a href="#" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#forceDeleteModal{{ $m->id }}" title="Hapus Permanen">
+                                                    <a href="#" class="btn text-muted" data-bs-toggle="modal" data-bs-target="#forceDeleteModal{{ $m->id }}" title="Hapus Permanen">
                                                         <i class="fa fa-trash"></i>
                                                     </a>
                                                 </div>

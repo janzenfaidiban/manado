@@ -22,6 +22,7 @@
                             <!-- toolbar -->
                             <x-admin.toolbar 
                                 :btnCreate="route('jemaat.create')" 
+                                :btnPrint="route('jemaat.print')" 
                                 :formAction="route('jemaat.index')"
                             />
 

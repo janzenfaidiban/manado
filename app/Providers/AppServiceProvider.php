@@ -60,7 +60,7 @@ class AppServiceProvider extends ServiceProvider
                 'author' => 'Yudinus Alom',
 
                 // site copyright info
-                'siteCopyright' => '<script>document.write(new Date().getFullYear())</script> &copy; Sistem Informasi Pendataan Jemaat Gereja Kemah Inil Indonesia GKII Moria Manado oleh by <a href="https://github.com/YudinusAlom" target="_blank">Yudinus Alom</a>',
+                'siteCopyright' => '<script>document.write(new Date().getFullYear())</script> &copy; Sistem Informasi Pendataan Jemaat Gereja Kemah Inil Indonesia GKII Moria Manado',
                 
                 // footer links
                 'footerLinks' => 'footerLinks',

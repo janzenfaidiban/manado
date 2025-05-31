@@ -12,6 +12,7 @@ Route::prefix('pendeta')->group(function () {
         
         // menampilkan formulir tambah pendeta
         Route::get('/create', 'create')->name('pendeta.create');
+        Route::get('/print', 'print')->name('pendeta.print');
 
         // simpan data pendeta baru
         Route::post('/store', 'store')->name('pendeta.store');

@@ -22,6 +22,7 @@
                             <!-- toolbar -->
                             <x-admin.toolbar 
                                 :btnCreate="route('majelis.create')" 
+                                :btnPrint="route('majelis.print')" 
                                 :formAction="route('majelis.index')"
                             />
 

@@ -30,6 +30,32 @@ class MajelisController extends Controller
         ))->with('i', ($request->input('page', 1) - 1) * 10);
     }
 
+
+    // print
+    public function print(Request $request)
+    {
+        $search = $request->input('search');
+
+        $query = Majelis::query();
+
+        if ($search) {
+            $query->where('nama_lengkap', 'LIKE', '%' . $search . '%');
+        }
+
+        $majelis = $query->orderBy('nama_lengkap', 'asc')->get();
+
+        $pageTitle = 'Cetak Data Majelis';
+        $pageDescription = 'Menampilkan semua data Majelis.';
+
+        return view('majelis.print', compact(
+            'pageTitle',
+            'pageDescription',
+            'majelis',
+        ))->with('i', ($request->input('page', 1) - 1) * 10);
+    }
+
+
+
     // Show form to add new Majelis
     public function create()
     {

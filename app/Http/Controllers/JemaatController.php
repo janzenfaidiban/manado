@@ -30,6 +30,33 @@ class JemaatController extends Controller
         ))->with('i', ($request->input('page', 1) - 1) * 10);
     }
 
+
+
+
+    // Menampilkan daftar Jemaat dengan pagination dan pencarian nama
+    public function print(Request $request)
+    {
+        $search = $request->input('search');
+
+        $query = Jemaat::query();
+
+        if ($search) {
+            $query->where('nama_lengkap', 'LIKE', '%' . $search . '%');
+        }
+
+        $jemaats = $query->orderBy('nama_lengkap', 'asc')->get();
+
+        $pageTitle = 'Cetak Data Jemaat';
+        $pageDescription = 'Menampilkan semua data Jemaat.';
+
+        return view('jemaat.print', compact(
+            'pageTitle',
+            'pageDescription',
+            'jemaats',
+        ))->with('i', ($request->input('page', 1) - 1) * 10);
+    }
+
+
     // Show form to add new Jemaat
     public function create()
     {

@@ -9,6 +9,7 @@ Route::prefix('majelis')->group(function () {
 
         // menampilkan semua data majelis
         Route::get('/', 'index')->name('majelis.index');
+        Route::get('/print', 'print')->name('majelis.print');
         
         // menampilkan formulir tambah majelis
         Route::get('/create', 'create')->name('majelis.create');

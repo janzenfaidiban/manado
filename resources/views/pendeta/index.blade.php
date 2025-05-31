@@ -22,6 +22,7 @@
                             <!-- toolbar -->
                             <x-admin.toolbar 
                                 :btnCreate="route('pendeta.create')" 
+                                :btnPrint="route('pendeta.print')" 
                                 :formAction="route('pendeta.index')"
                             />
 

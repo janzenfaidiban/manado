@@ -31,6 +31,30 @@ class PendetaController extends Controller
     }
 
 
+    // print
+    public function print(Request $request)
+    {
+        $search = $request->input('search');
+
+        $query = Pendeta::query();
+
+        if ($search) {
+            $query->where('nama_lengkap', 'LIKE', '%' . $search . '%');
+        }
+
+        $pendetas = $query->orderBy('nama_lengkap', 'asc')->get();
+
+        $pageTitle = 'Cetak Data Pendeta';
+        $pageDescription = 'Menampilkan semua data Pendeta.';
+
+        return view('pendeta.print', compact(
+            'pageTitle',
+            'pageDescription',
+            'pendetas',
+        ))->with('i', ($request->input('page', 1) - 1) * 10);
+    }
+
+
     // Show form to add new Pendeta
     public function create()
     {

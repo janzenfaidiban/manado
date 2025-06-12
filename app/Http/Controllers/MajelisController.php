@@ -174,6 +174,21 @@ class MajelisController extends Controller
         return redirect()->back()->with('success', 'Data Majelis berhasil diperbarui.');
     }
 
+    // forceDelete (delete permanently)
+    public function forceDelete($id)
+    {
+
+        try {
+            $data = Majelis::findOrFail($id);
+
+            $data->forceDelete();
+
+            return redirect()->back()->with('success', 'Majelis berhasil dihapus permanen.');
+        
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Gagal menghapus Majelis: ' . $e->getMessage());
+        }
+    }
 
     
 }

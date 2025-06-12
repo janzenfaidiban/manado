@@ -155,6 +155,22 @@ class PendetaController extends Controller
         return redirect()->back()->with('success', 'Data Pendeta berhasil diperbarui.');
     }
 
+    // forceDelete (delete permanently)
+    public function forceDelete($id)
+    {
+
+        try {
+            $data = Pendeta::findOrFail($id);
+
+            $data->forceDelete();
+
+            return redirect()->back()->with('success', 'Pendeta berhasil dihapus permanen.');
+        
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Gagal menghapus Pendeta: ' . $e->getMessage());
+        }
+    }
+
 
 
     

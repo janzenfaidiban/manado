@@ -21,6 +21,7 @@
                             <form 
                                 action="{{ isset($data) ? route('admin.update', $data->id) : route('admin.store') }}" 
                                 method="POST"
+                                enctype="multipart/form-data"
                             >
                                 @csrf
                                 @if(isset($data))
@@ -128,7 +129,7 @@
                                 <label for="avatar" class="form-label">Avatar</label>
                                 <!-- Preview Avatar -->
                                 <div class="mb-2">
-                                    <img id="preview-image" src="{{ isset($data) && $data->user->avatar ? asset('storage/' . $data->user->avatar) : asset('assets/img/avatar-placeholder.png') }}" alt="Preview avatar" width="150" class="img-thumbnail">
+                                    <img id="preview-image" src="{{ isset($data) ? asset($data->user->avatar) : 'assets/img/avatar-placeholder.png' }}" alt="Preview avatar" width="150" class="img-thumbnail rounded-circle">
                                 </div>
 
                                 <input type="file" class="form-control" id="avatar" name="avatar" accept="image/*" onchange="previewImage(event)">

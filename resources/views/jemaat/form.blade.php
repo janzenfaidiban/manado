@@ -206,7 +206,7 @@
                                     <button type="submit" class="btn btn-primary">
                                         <i class="fa fa-save"></i> Simpan
                                     </button>
-                                    <a href="{{ route('jemaat.index') }}" class="btn btn-secondary">
+                                    <a href="{{ route('jemaat.index') }}" class="btn text-muted">
                                         <i class="fa fa-times-circle"></i> Tutup
                                     </a>
                                 </div>

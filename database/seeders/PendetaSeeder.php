@@ -19,7 +19,7 @@ class PendetaSeeder extends Seeder
                 'tanggal_lahir' => '1970-04-15',
                 'tempat_lahir' => 'Wamena',
                 'pendidikan_terakhir' => 'S2',
-                'foto_profil' => 'yohanes.jpg',
+                // 'foto_profil' => 'yohanes.jpg',
                 'keterangan' => 'Pendeta senior dengan pengalaman lebih dari 20 tahun.'
             ],
             [
@@ -28,7 +28,7 @@ class PendetaSeeder extends Seeder
                 'tanggal_lahir' => '1982-09-10',
                 'tempat_lahir' => 'Jayapura',
                 'pendidikan_terakhir' => 'S1',
-                'foto_profil' => 'maria.jpg',
+                // 'foto_profil' => 'maria.jpg',
                 'keterangan' => 'Aktif dalam pelayanan kaum ibu dan anak-anak.'
             ],
             [
@@ -37,7 +37,7 @@ class PendetaSeeder extends Seeder
                 'tanggal_lahir' => '1975-11-25',
                 'tempat_lahir' => 'Sentani',
                 'pendidikan_terakhir' => 'S3',
-                'foto_profil' => 'samuel.jpg',
+                // 'foto_profil' => 'samuel.jpg',
                 'keterangan' => 'Juga mengajar di sekolah teologi lokal.'
             ],
             [
@@ -46,7 +46,7 @@ class PendetaSeeder extends Seeder
                 'tanggal_lahir' => '1985-03-07',
                 'tempat_lahir' => 'Manokwari',
                 'pendidikan_terakhir' => 'S1',
-                'foto_profil' => 'ruth.jpg',
+                // 'foto_profil' => 'ruth.jpg',
                 'keterangan' => 'Mengembangkan program pelayanan pemuda.'
             ],
             [
@@ -55,7 +55,7 @@ class PendetaSeeder extends Seeder
                 'tanggal_lahir' => '1968-06-30',
                 'tempat_lahir' => 'Biak',
                 'pendidikan_terakhir' => 'S2',
-                'foto_profil' => 'lukas.jpg',
+                // 'foto_profil' => 'lukas.jpg',
                 'keterangan' => 'Melayani di wilayah pesisir selama lebih dari 15 tahun.'
             ],
         ];

@@ -47,7 +47,7 @@
                                         <tr>
                                             <th scope="row">{{ $i + $key + 1 }}</th>
                                             <td>
-                                                <img src="{{ $pendeta->foto_profil ? asset($pendeta->foto_profil) : 'assets/img/avatar-placeholder.png' }}" alt="Foto Profil" class="avatar-img rounded-circle" width="50">
+                                                <img src="{{ $pendeta->foto_profil ? asset($pendeta->foto_profil) : asset('assets/img/avatar-placeholder.png') }}" alt="Foto Profil" class="avatar-img" width="50">
                                             </td>
                                             <td>{{ $pendeta->nama_lengkap }}</td>
                                             <td>{{ $pendeta->jenis_kelamin == 'L' ? 'Laki-laki' : 'Perempuan' }}</td>

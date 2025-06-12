@@ -22,6 +22,7 @@
                             <!-- toolbar -->
                             <x-admin.toolbar 
                                 :btnCreate="route('admin.create')" 
+                                :btnPrint="route('admin.print')" 
                                 :formAction="route('admin.index')"
                             />
 
@@ -44,8 +45,9 @@
                                     @forelse($adminSupers as $key => $adminSuper)
                                         <tr>
                                             <th scope="row">{{ $i + $key + 1 }}</th>
-                                            <td>
-                                                <img src="{{ $adminSuper->user->avatar ? asset($adminSuper->user->avatar) : 'assets/img/avatar-placeholder.png' }}" alt="Avatar" class=" rounded-circle" width="70px">
+                                            <td> 
+                                                <img src="{{ $adminSuper->user->avatar ? asset($adminSuper->user->avatar) : asset('assets/img/avatar-placeholder.png') }}" alt="Avatar" class="" width="70px">
+                                                
                                             </td>
                                             <td>{{ $adminSuper->nama_lengkap }}</td>
                                             <td>{{ $adminSuper->no_hp }}</td>

@@ -8,6 +8,7 @@ Route::prefix('admin-super')->group(function () {
     Route::controller(AdminSuperController::class)->group(function () {
 
         Route::get('/', 'index')->name('admin.index');
+        Route::get('/print', 'print')->name('admin.print');
         Route::get('/create', 'create')->name('admin.create');
         Route::post('/store', 'store')->name('admin.store');
         Route::get('{id}/detail', 'show')->name('admin.show');

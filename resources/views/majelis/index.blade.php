@@ -49,11 +49,7 @@
                                         <tr>
                                             <th scope="row">{{ $i + $key + 1 }}</th>
                                             <td>
-                                                @if ($m->foto_profil)
-                                                    <img src="{{ asset($m->foto_profil) }}" alt="Foto Profil" width="50" height="50" style="object-fit: cover; border-radius: 50%;">
-                                                @else
-                                                    <span>-</span>
-                                                @endif
+                                                <img src="{{ $m->foto_profil ? asset($m->foto_profil) : asset('assets/img/avatar-placeholder.png') }}" alt="Foto Profil" class="avatar-img" width="50">
                                             </td>
                                             <td>{{ $m->nama_lengkap }}</td>
                                             <td>{{ $m->jenis_kelamin == 'L' ? 'Laki-laki' : 'Perempuan' }}</td>

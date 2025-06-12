@@ -23,7 +23,7 @@ class MajelisSeeder extends Seeder
                 'periode_jabatan' => '2022-2025',
                 'pekerjaan' => 'PNS',
                 'pendidikan_terakhir' => 'S1',
-                'foto_profil' => 'andi.jpg',
+                // 'foto_profil' => 'andi.jpg',
                 'keterangan' => 'Aktif dalam kegiatan sosial.'
             ],
             [
@@ -36,7 +36,7 @@ class MajelisSeeder extends Seeder
                 'periode_jabatan' => '2023-2026',
                 'pekerjaan' => 'Guru',
                 'pendidikan_terakhir' => 'S2',
-                'foto_profil' => 'maria.jpg',
+                // 'foto_profil' => 'maria.jpg',
                 'keterangan' => 'Bertanggung jawab atas dokumentasi.'
             ],
             [
@@ -49,7 +49,7 @@ class MajelisSeeder extends Seeder
                 'periode_jabatan' => '2021-2024',
                 'pekerjaan' => 'Wiraswasta',
                 'pendidikan_terakhir' => 'SMA/SMK',
-                'foto_profil' => 'yusuf.jpg',
+                // 'foto_profil' => 'yusuf.jpg',
                 'keterangan' => 'Mengelola keuangan majelis.'
             ],
             [
@@ -62,7 +62,7 @@ class MajelisSeeder extends Seeder
                 'periode_jabatan' => '2023-2025',
                 'pekerjaan' => 'Petani',
                 'pendidikan_terakhir' => 'SMP',
-                'foto_profil' => 'lina.jpg',
+                // 'foto_profil' => 'lina.jpg',
                 'keterangan' => 'Aktif membantu dalam kegiatan lapangan.'
             ],
             [
@@ -75,7 +75,7 @@ class MajelisSeeder extends Seeder
                 'periode_jabatan' => '2022-2025',
                 'pekerjaan' => 'Mahasiswa',
                 'pendidikan_terakhir' => 'S1',
-                'foto_profil' => 'fredi.jpg',
+                // 'foto_profil' => 'fredi.jpg',
                 'keterangan' => 'Masih aktif kuliah sambil membantu organisasi.'
             ],
         ];

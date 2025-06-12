@@ -76,7 +76,7 @@ class JemaatController extends Controller
             'tempat_lahir'        => 'required|string|max:255',
             'pendidikan_terakhir' => 'required|in:SD,SMP,SMA/SMK,S1,S2,S3,Lainnya',
             'pekerjaan'           => 'required|in:Pelajar,Mahasiswa,PNS,TNI,POLRI,Guru,Petani,Wiraswasta,Lainnya',
-            'lingkungan'          => 'required|in:1,2,3,4',
+            'lingkungan'          => 'required|in:Lingkungan 1,Lingkungan 2,Lingkungan 3,Lingkungan 4',
             'status_baptis'            => 'nullable',
             'keterangan'            => 'nullable',
         ]);
@@ -126,7 +126,7 @@ class JemaatController extends Controller
             'tempat_lahir'        => 'required|string|max:255',
             'pendidikan_terakhir' => 'required|in:SD,SMP,SMA/SMK,S1,S2,S3,Lainnya',
             'pekerjaan'           => 'required|in:Pelajar,Mahasiswa,PNS,TNI,POLRI,Guru,Petani,Wiraswasta,Lainnya',
-            'lingkungan'          => 'required|in:1,2,3,4',
+            'lingkungan'          => 'required|in:Lingkungan 1,Lingkungan 2,Lingkungan 3,Lingkungan 4',
             'status_baptis'            => 'nullable',
             'keterangan'            => 'nullable',
         ]);

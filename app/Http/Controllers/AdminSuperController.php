@@ -38,6 +38,33 @@ class AdminSuperController extends Controller
         ))->with('i', ($request->input('page', 1) - 1) * 10);
     }
 
+
+    // print
+    public function print(Request $request)
+    {
+        $search = $request->input('search');
+
+        $query = AdminSuper::query()
+            ->whereHas('user', function($q) {
+                $q->role('admin');  // spatie menyediakan scope role()
+            });
+
+        if ($search) {
+            $query->where('nama_lengkap', 'LIKE', '%' . $search . '%');
+        }
+
+        $adminSupers = $query->orderBy('nama_lengkap', 'asc')->get();
+
+        $pageTitle = 'Cetak Data Admin Super';
+        $pageDescription = 'Menampilkan semua data Admin Super.';
+
+        return view('admin-super.print', compact(
+            'pageTitle',
+            'pageDescription',
+            'adminSupers',
+        ))->with('i', ($request->input('page', 1) - 1) * 10);
+    }
+
     // Show form to add new AdminSuper
     public function create()
     {
@@ -127,55 +154,71 @@ class AdminSuperController extends Controller
         return view('admin-super.form', compact('pageTitle', 'pageDescription', 'data'));
     }
 
-    // Update existing AdminSuper data
     public function update(Request $request, $id)
-    {
-        $adminSuper = AdminSuper::findOrFail($id);
-        $user = $adminSuper->user; // Pastikan relasi user sudah ada di model AdminSuper
+{
+    $adminSuper = AdminSuper::findOrFail($id);
+    $user = $adminSuper->user; // Pastikan relasi user sudah ada di model AdminSuper
 
-        // Buat rules validasi
-        $rules = [
-            'nama_lengkap' => 'required|string|max:255',
-            'no_hp'        => 'required|string|max:20',
-            'email'        => 'required|email|unique:admin_supers,email,' . $adminSuper->id,
-            'keterangan'   => 'nullable|string',
-            'username'     => 'required|string|unique:users,username,' . $user->id,
-        ];
+    // Buat rules validasi
+    $rules = [
+        'nama_lengkap' => 'required|string|max:255',
+        'no_hp'        => 'required|string|max:20',
+        'email'        => 'required|email|unique:admin_supers,email,' . $adminSuper->id,
+        'keterangan'   => 'nullable|string',
+        'username'     => 'required|string|unique:users,username,' . $user->id,
+    ];
 
-        // Password hanya validasi jika diisi
-        if ($request->filled('password')) {
-            $rules['password'] = 'string|min:6|confirmed';
-        }
-
-        $request->validate($rules);
-
-        // Update data AdminSuper
-        $adminSuper->update([
-            'nama_lengkap' => $request->nama_lengkap,
-            'no_hp'        => $request->no_hp,
-            'email'        => $request->email,
-            'keterangan'   => $request->keterangan,
-        ]);
-
-        // Update user
-        $user->name = $request->nama_lengkap;
-        $user->username = $request->username;
-        $user->email = $request->email;
-
-        $user->avatar = 'assets/img/avatar-placeholder.png'; // Set avatar ke default
-
-        if ($request->filled('password')) {
-            $user->password = Hash::make($request->password);
-        }
-        $user->save();
-
-        // Pastikan user punya role 'admin'
-        if (!$user->hasRole('admin')) {
-            $user->assignRole('admin');
-        }
-
-        return redirect()->back()->with('success', 'Data Admin Super berhasil diperbarui.');
+    // Password hanya validasi jika diisi
+    if ($request->filled('password')) {
+        $rules['password'] = 'string|min:6|confirmed';
     }
+
+    $request->validate($rules);
+
+    // Update data AdminSuper
+    $adminSuper->update([
+        'nama_lengkap' => $request->nama_lengkap,
+        'no_hp'        => $request->no_hp,
+        'email'        => $request->email,
+        'keterangan'   => $request->keterangan,
+    ]);
+
+    // Update user
+    $user->name = $request->nama_lengkap;
+    $user->username = $request->username;
+    $user->email = $request->email;
+
+    if ($request->filled('password')) {
+        $user->password = Hash::make($request->password);
+    }
+
+    // Handle upload avatar (replace old if new uploaded)
+    if ($request->hasFile('avatar')) {
+        $file = $request->file('avatar');
+        $filename = time() . '_' . $file->getClientOriginalName();
+        $file->move(public_path('uploads/adminSuper'), $filename);
+        $avatarPath = 'uploads/adminSuper/' . $filename;
+
+        // Hapus file lama jika ada
+        if ($user->avatar && file_exists(public_path($user->avatar))) {
+            unlink(public_path($user->avatar));
+        }
+
+        // Simpan avatar ke model User
+        $user->avatar = $avatarPath;
+    }
+
+    // Simpan user setelah semua update
+    $user->save();
+
+    // Pastikan user punya role 'admin'
+    if (!$user->hasRole('admin')) {
+        $user->assignRole('admin');
+    }
+
+    return redirect()->back()->with('success', 'Data Admin Super berhasil diperbarui.');
+}
+
 
 
     // forceDelete (delete permanently)
